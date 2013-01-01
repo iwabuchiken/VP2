@@ -1,8 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">VP2</string>
+    <string name="app_name">VideoPLayer</string>
     <string name="hello_world">Hello world!</string>
+    
     <string name="menu_settings">Settings</string>
+    <string name="title_activity_main_actv">MainActv</string>
+    <string name="menu_get_current_position">Get current position</string>
+    <string name="menu_set_position">Set position</string>
+    
+    <!-- activity_main_actv_vv.xml -->
+    	<string name="actv_main_bt_start">Start point</string>
+    	<string name="actv_main_bt_end">End point</string>
+    	<string name="actv_main_bt_export">Export data</string>
 
+    <!-- /menu/activity_main_actv.xml -->
+    	<string name="menu_main_clear_table">Clear table</string>
+    
 </resources>
