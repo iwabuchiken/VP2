@@ -28,6 +28,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -86,7 +87,10 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 	
-		B4_v_1_0();
+		B5_v_1_0();
+		
+		
+//		B4_v_1_0();
 		
 	//		B3_v_1_1a();
 	//        B3_v_1_1();
@@ -109,6 +113,17 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 	}//public void onCreate(Bundle savedInstanceState)
 	
 	
+	private void B5_v_1_0() {
+		// TODO Auto-generated method stub
+		// Log
+		Log.d("MainActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "sdk=" + android.os.Build.VERSION.SDK_INT);
+		
+		B4_v_1_0();
+	}//private void B5_v_1_0()
+
+
 	private void B4_v_1_0() {
 		
 		setContentView(R.layout.activity_main_actv_vv);
@@ -1223,9 +1238,22 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 
 	
 	
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	//	        getMenuInflater().inflate(R.menu.activity_main_actv, menu);
+		
+		//REF http://stackoverflow.com/questions/3993924/android-api-level
+		if (android.os.Build.VERSION.SDK_INT >= 11) {
+
+			MenuItem actionItem = menu.add("Action Button Help Icon");
+	        // アイコンを設定
+	        actionItem.setIcon(android.R.drawable.ic_menu_help);
+	 
+	        // SHOW_AS_ACTION_ALWAYS:常に表示
+	        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+		}//if (android.os.Build.VERSION.SDK_INT == )
 		
 	    return true;
 	}
@@ -1422,11 +1450,24 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 				+ "]", "onStop()");
 		
 		// B3 v-1.1
-		while(!task_prog.isCancelled()) {
+//		while(!task_prog.isCancelled()) {
+//			
+//			task_prog.cancel(true);
+//		}
+	
+		if (task_prog != null) {
 			
 			task_prog.cancel(true);
-		}
-	
+			
+		} else {//if (task_prog != null)
+			
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "task_prog == null");
+			
+		}//if (task_prog != null)
+		
 		// Log
 		Log.d("MainActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
