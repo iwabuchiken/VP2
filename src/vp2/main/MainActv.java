@@ -78,7 +78,9 @@ public class MainActv extends Activity
 	
 	public static SRTListAdapter aAdapter = null;
 
-
+	// B5 v-2.1
+	String[] opt_menu_labels;
+	
 	/*********************************
 	 * Views
 	 *********************************/
@@ -97,7 +99,8 @@ public class MainActv extends Activity
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 
-		B5_v_2_0();
+		B5_v_2_1();
+//		B5_v_2_0();
 //		B5_v_1_1();
 //		B5_v_1_0();
 		
@@ -106,6 +109,20 @@ public class MainActv extends Activity
 	}//public void onCreate(Bundle savedInstanceState)
 	
 	
+	private void B5_v_2_1() {
+		
+		getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
+		
+		B5_v_1_0();
+		
+		// Option menu labels
+		opt_menu_labels =
+				this.getResources().getStringArray(R.array.option_menu_labels_actv_main);
+		
+		
+	}//private void B5_v_2_1()
+
+
 	@SuppressLint("NewApi")
 	private void B5_v_2_0() {
 		
@@ -1297,15 +1314,17 @@ public class MainActv extends Activity
 		//REF http://stackoverflow.com/questions/3993924/android-api-level
 		if (android.os.Build.VERSION.SDK_INT >= 11) {
 
-			MenuItem actionItem = menu.add("Action Button Help Icon");
+			// B5 v-2.1
+//			MenuItem item1 = menu.add(opt_menu_labels[0]);
+			MenuItem item1 = menu.add(CONST.opt_menu_main_1_clear_table);
 	        // アイコンを設定
-//	        actionItem.setIcon(android.R.drawable.ic_menu_help);
-			actionItem.setIcon(android.R.drawable.ic_menu_call);
+//	        item1.setIcon(android.R.drawable.ic_menu_help);
+			item1.setIcon(android.R.drawable.ic_menu_call);
 	 
 	        
 	        
 	        // SHOW_AS_ACTION_ALWAYS:常に表示
-	        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+	        item1.setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
 		}//if (android.os.Build.VERSION.SDK_INT == )
 		
@@ -1338,21 +1357,38 @@ public class MainActv extends Activity
 		
 		// debug
 //		Toast.makeText(this, item.getItemId(), Toast.LENGTH_SHORT).show();
-		Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
 		
-		switch (item.getItemId()) {
-	
-//		case R.id.menu_clear_table:
-//			
-//			// debug
-//			Toast.makeText(this, "Clear the table", Toast.LENGTH_SHORT).show();
-//			
-//			break;
+		// B5 v-2.1
+		if (item.getTitle().equals(CONST.opt_menu_main_1_clear_table)) {
 			
-		default:
-			break;
+			Methods_VP2.clear_table_main(this);
+			
+//			// debug
+//			Toast.makeText(this,
+//					CONST.opt_menu_main_1_clear_table, Toast.LENGTH_SHORT).show();
+			
+		} else {//if (item.getTitle().equals(CONST.opt_menu_main_1_clear_table))
+			
+			// debug
+			Toast.makeText(this, "Unknown option", Toast.LENGTH_SHORT).show();
+			
+		}//if (item.getTitle().equals(CONST.opt_menu_main_1_clear_table))
 		
-		}//switch (item.getItemId())
+		
+//		switch (item.getItemId()) {
+//	
+////		case R.id.menu_clear_table:
+////			
+////			// debug
+////			Toast.makeText(this, "Clear the table", Toast.LENGTH_SHORT).show();
+////			
+////			break;
+//			
+//		default:
+//			break;
+//		
+//		}//switch (item.getItemId())
 		
 		return super.onOptionsItemSelected(item);
 	}

@@ -61,6 +61,7 @@ import org.apache.commons.net.ftp.FTPClient;
 
 import vp2.items.SRTItem;
 import vp2.listeners.dialog.DialogListener;
+import vp2.main.MainActv;
 
 // REF=> http://commons.apache.org/net/download_net.cgi
 //REF=> http://www.searchman.info/tips/2640.html
@@ -257,6 +258,67 @@ public class Methods_VP2 {
 
 		
 	}//public static void sort_list_start_time(List<SRTItem> srt_list)
+
+
+	
+	public static void clear_table_main(Activity actv) {
+
+		/*********************************
+		 * #Setup the db,
+		 * #Drop the table,
+		 * #Create a new one with the same same,
+		 * #Close the db,
+		 * #Clear the list,
+		 * #Notify the adapter of the change
+		 *********************************/
+		//Setup the db,
+		DBUtils dbu = new DBUtils(actv, CONST.dbname_main);
+		
+		//
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		//Drop the table,
+		dbu.dropTable(actv, wdb, CONST.tname_main);
+		
+		//Create a new one with the same same,
+		dbu.createTable(wdb,
+				CONST.tname_main,
+				CONST.cols_srt_data,
+				CONST.col_types_srt_data);
+
+		//Close the db,
+		wdb.close();
+
+		//Clear the list,
+		if (MainActv.srt_list != null) {
+		
+			//Clear the list,
+			MainActv.srt_list.clear();
+			
+		} else {//if (MainActv.srt_list != null)
+			
+			// Log
+			Log.d("Methods_VP2.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "MainActv.srt_list == null");
+			
+		}//if (MainActv.srt_list != null)
+		
+		if (MainActv.aAdapter != null) {
+			
+			//Notify the adapter of the change
+			MainActv.aAdapter.notifyDataSetChanged();
+			
+		} else {//if (MainActv.srt_list != null)
+			
+			// Log
+			Log.d("Methods_VP2.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "MainActv.aAdapter == null");
+			
+		}//if (MainActv.srt_list != null)
+		
+	}//public static void clear_table_main(Activity actv)
 
 	
 	

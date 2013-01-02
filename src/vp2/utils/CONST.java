@@ -55,4 +55,9 @@ public class CONST {
 	
 	public static String tname_main = "srt_data";
 	
+	/*********************************
+	 * Option menues
+	 *********************************/
+	public static String opt_menu_main_1_clear_table = "Clear the table";
+	
 }//public class CONST

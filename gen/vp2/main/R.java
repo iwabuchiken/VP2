@@ -10,6 +10,9 @@ package vp2.main;
 public final class R {
     public static final class array {
         public static final int action_list=0x7f060000;
+        /**  Option menu labels 
+         */
+        public static final int option_menu_labels_actv_main=0x7f060001;
     }
     public static final class attr {
     }

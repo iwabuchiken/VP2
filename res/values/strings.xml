@@ -15,10 +15,15 @@
 
     <!-- /menu/activity_main_actv.xml -->
     	<string name="menu_main_clear_table">Clear table</string>
-    
+
     <string-array name="action_list">
         <item>FilterMode</item>
         <item>Non-FilterMode</item>
     </string-array>
-
+    
+    <!-- Option menu labels -->
+	    <string-array name="option_menu_labels_actv_main">
+	        <item>Clear the table</item>
+	    </string-array>
+    
 </resources>

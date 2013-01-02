@@ -1,0 +1,40 @@
+01-02 14:05:14.720: D/MainActv.java[1550](11198): onPause()
+01-02 14:05:14.750: D/MainActv.java[1562](11198): onStop()
+01-02 14:05:14.750: D/MainActv.java[1586](11198): task_prog => Cancelled
+01-02 14:05:14.760: D/Task_Progress.java[123](11198): Exc: java.lang.InterruptedException
+01-02 14:05:14.800: D/Task_Progress.java[109](11198): isCancelled
+01-02 14:07:17.610: W/SQLiteCursor(11198): requery() failed database /data/data/vp2.main/databases/vp (conn# 0) already closed
+01-02 14:07:17.610: W/SQLiteCursor(11198): java.lang.IllegalStateException: database /data/data/vp2.main/databases/vp (conn# 0) already closed
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.database.sqlite.SQLiteDatabase.verifyDbIsOpen(SQLiteDatabase.java:2082)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.database.sqlite.SQLiteDatabase.getDbConnection(SQLiteDatabase.java:2407)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.database.sqlite.SQLiteDatabase.getDatabaseHandle(SQLiteDatabase.java:2388)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.database.sqlite.SQLiteCursor.requery(SQLiteCursor.java:246)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.app.Activity.performRestart(Activity.java:4505)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.app.ActivityThread.handleSleeping(ActivityThread.java:2941)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.app.ActivityThread.access$2600(ActivityThread.java:123)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1268)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.os.Looper.loop(Looper.java:137)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at android.app.ActivityThread.main(ActivityThread.java:4424)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at java.lang.reflect.Method.invokeNative(Native Method)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at java.lang.reflect.Method.invoke(Method.java:511)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+01-02 14:07:17.610: W/SQLiteCursor(11198): 	at dalvik.system.NativeStart.main(Native Method)
+01-02 14:07:17.610: D/AndroidRuntime(11198): Shutting down VM
+01-02 14:07:17.610: W/dalvikvm(11198): threadid=1: thread exiting with uncaught exception (group=0x40a731f8)
+01-02 14:07:17.680: E/AndroidRuntime(11198): FATAL EXCEPTION: main
+01-02 14:07:17.680: E/AndroidRuntime(11198): java.lang.IllegalStateException: trying to requery an already closed cursor  android.database.sqlite.SQLiteCursor@411022c8
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.app.Activity.performRestart(Activity.java:4508)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.app.ActivityThread.handleSleeping(ActivityThread.java:2941)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.app.ActivityThread.access$2600(ActivityThread.java:123)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1268)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.os.Looper.loop(Looper.java:137)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at android.app.ActivityThread.main(ActivityThread.java:4424)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at java.lang.reflect.Method.invokeNative(Native Method)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at java.lang.reflect.Method.invoke(Method.java:511)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+01-02 14:07:17.680: E/AndroidRuntime(11198): 	at dalvik.system.NativeStart.main(Native Method)
+01-02 14:07:21.190: I/Process(11198): Sending signal. PID: 11198 SIG: 9
