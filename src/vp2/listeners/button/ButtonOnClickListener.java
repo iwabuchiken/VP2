@@ -9,7 +9,9 @@ import java.io.OutputStreamWriter;
 
 import org.apache.commons.lang.StringUtils;
 
+import vp2.adapters.SRTListAdapter;
 import vp2.main.MainActv;
+import vp2.main.R;
 import vp2.utils.CONST;
 import vp2.utils.DBUtils;
 import vp2.utils.Methods;
@@ -218,7 +220,12 @@ public class ButtonOnClickListener implements OnClickListener {
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Refreshing the list view ...");
 			
-			MainActv.srt_list.clear();
+			if (MainActv.srt_list != null) {
+				
+				MainActv.srt_list.clear();
+				
+			}//if (MainActv.srt_list == condition)
+//			MainActv.srt_list.clear();
 			
 			// Log
 			Log.d("ButtonOnClickListener.java" + "["
@@ -227,22 +234,56 @@ public class ButtonOnClickListener implements OnClickListener {
 			
 //			MainActv.srt_list = Methods_vp2.get_srt_list_from_db(actv);
 			
-			MainActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+			if (MainActv.srt_list != null) {
+
+				MainActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+				
+				// Log
+				Log.d("ButtonOnClickListener.java" + "["
+						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+						+ "]", "MainActv.srt_list.size()=" + MainActv.srt_list.size());
+				
+				Methods_VP2.sort_list_start_time(MainActv.srt_list);
+				
+				// Log
+				Log.d("ButtonOnClickListener.java" + "["
+						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+						+ "]", "List => Sorted");
+				
+				MainActv.aAdapter.notifyDataSetChanged();
+
+			} else {//if (condition)
+
+				MainActv.srt_list = Methods_VP2.get_srt_list_from_db(actv);
+				
+				Methods_VP2.sort_list_start_time(MainActv.srt_list);
+				
+				MainActv.aAdapter = new SRTListAdapter(
+						actv,
+						R.layout.activity_main_actv_vv,
+						MainActv.srt_list
+				);
+
+				MainActv.lv_srt_items.setAdapter(MainActv.aAdapter);
+				
+			}//if (condition)
 			
-			// Log
-			Log.d("ButtonOnClickListener.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "MainActv.srt_list.size()=" + MainActv.srt_list.size());
-			
-			Methods_VP2.sort_list_start_time(MainActv.srt_list);
-			
-			// Log
-			Log.d("ButtonOnClickListener.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "List => Sorted");
-			
-			MainActv.aAdapter.notifyDataSetChanged();
-			
+//			MainActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+//			
+//			// Log
+//			Log.d("ButtonOnClickListener.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "MainActv.srt_list.size()=" + MainActv.srt_list.size());
+//			
+//			Methods_VP2.sort_list_start_time(MainActv.srt_list);
+//			
+//			// Log
+//			Log.d("ButtonOnClickListener.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "List => Sorted");
+//			
+//			MainActv.aAdapter.notifyDataSetChanged();
+//			
 			
 		} else {//if (MainActv.vvPlayer != null)
 			

@@ -75,7 +75,7 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 	
 	Task_Progress task_prog = null;
 	
-	ListView lv_srt_items;
+	public static ListView lv_srt_items;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -137,7 +137,7 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 		
 		srt_list = Methods_VP2.get_srt_list_from_db(this);
 		
-		Methods_VP2.sort_list_start_time(srt_list);
+//		Methods_VP2.sort_list_start_time(srt_list);
 		
 		// Log
 		if (srt_list != null) {
@@ -145,6 +145,8 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 			Log.d("MainActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "srt_list.size()=" + srt_list.size());
+			
+			Methods_VP2.sort_list_start_time(srt_list);
 	
 		} else {//if (srt_list != null)
 	
@@ -162,10 +164,47 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 				srt_list
 		);
 		
+		if (aAdapter == null) {
+			
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "aAdapter == null");
+			
+		} else {//if (aAdapter == null)
+
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "aAdapter != null");
+
+		}//if (aAdapter == null)
+		
 		//
 		lv_srt_items = (ListView) findViewById(R.id.actv_main_lv);
-		
-		lv_srt_items.setAdapter(aAdapter);
+
+		if (lv_srt_items == null) {
+			
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "lv_srt_items == null");
+			
+		} else {//if (lv_srt_items == null)
+
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "lv_srt_items != null");
+
+		}//if (lv_srt_items == null)
+
+		if (aAdapter != null) {
+			
+			lv_srt_items.setAdapter(aAdapter);
+			
+		}//if (aAdapter == condition)
+//		lv_srt_items.setAdapter(aAdapter);
 		
 		// Tag
 		lv_srt_items.setTag(Tags.ListTags.actv_main_lv);
