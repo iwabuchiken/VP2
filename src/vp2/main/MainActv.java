@@ -29,7 +29,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
@@ -41,6 +45,7 @@ import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.MediaController;
@@ -48,7 +53,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 	
-public class MainActv extends Activity implements SurfaceHolder.Callback, Runnable {
+public class MainActv extends Activity implements SurfaceHolder.Callback, Runnable, TabListener {
 
 	private static final String TAG = "VideoPlayer";
 
@@ -87,32 +92,39 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 	
-		B5_v_1_0();
-		
+		B5_v_1_1();
+//		B5_v_1_0();
 		
 //		B4_v_1_0();
-		
-	//		B3_v_1_1a();
-	//        B3_v_1_1();
-	//        B3_v_1_0();
-	        
-	 
-	//        setContentView(R.layout.activity_main_actv);
-	//        
-	//        getWindow().setFormat(PixelFormat.TRANSPARENT);
-	//        
-	//        // Initialize the holder
-	//        mPreview = (SurfaceView) findViewById(R.id.main_actv_sv);
-	//        holder = mPreview.getHolder();
-	//        holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-	//        holder.addCallback(this);
-	    
-	//        main_v_1_0();
-	//        main_v_1_3();
 	    
 	}//public void onCreate(Bundle savedInstanceState)
 	
 	
+	@SuppressLint("NewApi")
+	private void B5_v_1_1() {
+		// TODO Auto-generated method stub
+		getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
+		
+//		setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar);
+		
+		B5_v_1_0();
+		
+		if (android.os.Build.VERSION.SDK_INT >= 11) {
+			final ActionBar mActionBar = getActionBar();
+			mActionBar.addTab(mActionBar.newTab().setText("Tab 1")
+					.setTabListener(this));
+			mActionBar.addTab(mActionBar.newTab().setText("Tab 2")
+					.setTabListener(this));
+			mActionBar.addTab(mActionBar.newTab().setText("Tab 3")
+					.setTabListener(this));
+			
+			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+			
+		}//if (condition)
+		
+	}//private void B5_v_1_1()
+
+
 	private void B5_v_1_0() {
 		// TODO Auto-generated method stub
 		// Log
@@ -1248,8 +1260,11 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 
 			MenuItem actionItem = menu.add("Action Button Help Icon");
 	        // アイコンを設定
-	        actionItem.setIcon(android.R.drawable.ic_menu_help);
+//	        actionItem.setIcon(android.R.drawable.ic_menu_help);
+			actionItem.setIcon(android.R.drawable.ic_menu_call);
 	 
+	        
+	        
 	        // SHOW_AS_ACTION_ALWAYS:常に表示
 	        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
@@ -1262,6 +1277,10 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
+		
+		// debug
+//		Toast.makeText(this, item.getItemId(), Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
 		
 		switch (item.getItemId()) {
 	
@@ -1555,4 +1574,28 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 			
 			tv_progress.setText(Methods.convert_milsec_to_digits(currentPosition));
 		}
+
+
+	@SuppressLint("NewApi")
+	@Override
+	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@SuppressLint("NewApi")
+	@Override
+	public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@SuppressLint("NewApi")
+	@Override
+	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 }
