@@ -16,4 +16,9 @@
     <!-- /menu/activity_main_actv.xml -->
     	<string name="menu_main_clear_table">Clear table</string>
     
+    <string-array name="action_list">
+        <item>FilterMode</item>
+        <item>Non-FilterMode</item>
+    </string-array>
+
 </resources>

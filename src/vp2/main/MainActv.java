@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Activity;
@@ -46,14 +47,18 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.MediaController;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 	
-public class MainActv extends Activity implements SurfaceHolder.Callback, Runnable, TabListener {
+public class MainActv extends Activity 
+				implements SurfaceHolder.Callback, Runnable, 
+					TabListener, OnNavigationListener {
 
 	private static final String TAG = "VideoPlayer";
 
@@ -91,8 +96,9 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 		Log.d("MainActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
-	
-		B5_v_1_1();
+
+		B5_v_2_0();
+//		B5_v_1_1();
 //		B5_v_1_0();
 		
 //		B4_v_1_0();
@@ -100,6 +106,39 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 	}//public void onCreate(Bundle savedInstanceState)
 	
 	
+	@SuppressLint("NewApi")
+	private void B5_v_2_0() {
+		
+		getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
+		
+		B5_v_1_0();
+		
+		SpinnerAdapter mSpinnerAdapter = null;
+		
+		ActionBar mActionBar = getActionBar();
+		
+		String[] modeArray = null;
+		
+        mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        
+        mSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.action_list,
+//                android.R.layout.simple_spinner_dropdown_item);
+                R.layout.ddrow_actv_main_menu);
+        
+        mActionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
+        
+//        modeArray = getResources().getStringArray(R.array.action_list);
+//        
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        current = new MyFragment();
+//        ft.replace(R.id.frameLayout1, current, FRAGMENT_TAG);
+//        ft.commit();
+        
+	}//private void B5_v_2_0()
+	
+
+
 	@SuppressLint("NewApi")
 	private void B5_v_1_1() {
 		// TODO Auto-generated method stub
@@ -1275,6 +1314,25 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 	
 	
 	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		// TODO Auto-generated method stub
+		
+		// debug
+		int id = item.getItemId();
+		
+		// Log
+		Log.d("MainActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "id=" + id);
+		
+//		if (id != ) {
+//			Toast.makeText(this, item.getItemId(), Toast.LENGTH_SHORT).show();
+//		}//if (id)
+		return super.onMenuItemSelected(featureId, item);
+	}
+
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		
@@ -1597,5 +1655,18 @@ public class MainActv extends Activity implements SurfaceHolder.Callback, Runnab
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public boolean onNavigationItemSelected(int position, long itemId) {
+		// TODO Auto-generated method stub
+		
+		// Log
+		Log.d("MainActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "itemId=" + itemId + "/" + "positioni=" + position);
+		
+		return false;
 	}
 }
