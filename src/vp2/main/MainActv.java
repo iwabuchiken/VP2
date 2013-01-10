@@ -99,7 +99,9 @@ public class MainActv extends Activity
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 
-		B5_v_2_1();
+		B6_v_1_0();
+		
+//		B5_v_2_1();
 //		B5_v_2_0();
 //		B5_v_1_1();
 //		B5_v_1_0();
@@ -109,6 +111,11 @@ public class MainActv extends Activity
 	}//public void onCreate(Bundle savedInstanceState)
 	
 	
+	private void B6_v_1_0() {
+		// TODO Auto-generated method stub
+		B5_v_2_1();
+	}//private void B6_v_1_0()
+
 	private void B5_v_2_1() {
 		
 		getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
@@ -413,6 +420,26 @@ public class MainActv extends Activity
 			
 			}//new OnPreparedListener()
 		);//vvPlayer.setOnPreparedListener
+
+		// B6 v-1.0
+//		vvPlayer.setOnCompletionListener(new OnCompletionListener(){
+//
+//				@Override
+//				public void onCompletion(MediaPlayer arg0) {
+//
+//					task_prog.cancel(true);
+//					
+//					// Log
+//					Log.d("MainActv.java"
+//							+ "["
+//							+ Thread.currentThread().getStackTrace()[2]
+//									.getLineNumber() + "]", "Task cancelled");
+//					
+//				}//public void onCompletion(MediaPlayer arg0)
+//				
+//			}//new OnCompletionListener()
+//		
+//		);//vvPlayer.setOnCompletionListener
 		
 		// Log
 		Log.d("MainActv.java" + "["
