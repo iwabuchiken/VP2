@@ -99,6 +99,7 @@ public class MainActv extends Activity
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 
+
 		B6_v_1_0();
 		
 //		B5_v_2_1();

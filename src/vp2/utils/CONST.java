@@ -8,6 +8,10 @@ import android.os.Environment;
 
 public class CONST {
 
+	/*********************************
+	 * Path
+	 *********************************/
+	
 	public static final String DIRPATH_ROOT = "vp";
 	
 	public static final String DIRPATH_MEDIA = 
