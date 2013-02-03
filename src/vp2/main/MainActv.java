@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.lang.StringUtils;
 
+import vp2.adapters.MainListAdapter;
 import vp2.adapters.SRTListAdapter;
 import vp2.items.SRTItem;
 import vp2.listeners.button.ButtonOnClickListener;
@@ -38,6 +39,7 @@ import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
@@ -62,9 +64,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 	
-public class MainActv extends Activity {
+public class MainActv extends ListActivity {
+//public class MainActv extends Activity {
 
 	private static final String TAG = "VideoPlayer";
+
+	String[] listFiles;
+
+	public static MainListAdapter mainListAdp = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -75,15 +82,53 @@ public class MainActv extends Activity {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 
+		this.setTitle(this.getClass().getName());
 
 //		setContentView(R.layout.activity_play_actv_vv);
 	
-		B8_v_1_1();
+		B8_v_1_1b();
+		
+//		B8_v_1_1();
 		
 	}//public void onCreate(Bundle savedInstanceState)
 	
 	
 	
+	private void B8_v_1_1b() {
+		// TODO Auto-generated method stub
+		setContentView(R.layout.actv_main);
+
+		//debug
+		B8_v_1_1_setup_Layouts();
+		
+		B8_v_1_1_setup_media_dir();
+//		
+		getFilesList();
+		
+		setFilesList2ListView();
+		
+	}//private void B8_v_1_1b()
+
+
+
+	private void setFilesList2ListView() {
+		// TODO Auto-generated method stub
+//		ListView lv = (ListView) findViewById(R.id.actv_main_lv);
+		
+		mainListAdp = new MainListAdapter(
+				this,
+				R.layout.listrow_actv_main,
+//				fileList()
+				listFiles
+				);
+		
+		this.setListAdapter(mainListAdp);
+//		lv.setAdapter(mainListAdp);
+
+	}
+
+
+
 	private void B8_v_1_1() {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.actv_main);
@@ -242,7 +287,8 @@ public class MainActv extends Activity {
 		// TODO Auto-generated method stub
 		File dirMedia = new File(CONST.DIRPATH_MEDIA);
 		
-		String[] listFiles = dirMedia.list(new FilenameFilter(){
+//		String[] listFiles = dirMedia.list(new FilenameFilter(){
+		listFiles = dirMedia.list(new FilenameFilter(){
 
 			@Override
 			public boolean accept(File file, String name) {
@@ -288,6 +334,9 @@ public class MainActv extends Activity {
 			
 		}//if (listFiles != null)
 
+		
+		
+		
 	}//private void B8_v_1_1_get_files_list()
 
 
@@ -459,5 +508,61 @@ public class MainActv extends Activity {
 	
 	}//protected void onStop()
 	
+	private void getFilesList() {
+		// TODO Auto-generated method stub
+		File dirMedia = new File(CONST.DIRPATH_MEDIA);
+		
+		listFiles = dirMedia.list(new FilenameFilter(){
+
+			@Override
+			public boolean accept(File file, String name) {
+				// TODO Auto-generated method stub
+				if (name.matches(".*\\.mp4")) {
+					
+					return true;
+					
+				} else {//if (name.matches(""))
+					
+					return false;
+					
+				}//if (name.matches(""))
+				
+			}//public boolean accept(File file, String name)
+			
+		});//String[] listFiles
+		
+		//debug
+		if (listFiles != null) {
+
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "listFiles.length=" + listFiles.length);
+			
+			for (String name : listFiles) {
+				
+				// Log
+				Log.d("MainActv.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber()
+						+ ":"
+						+ Thread.currentThread().getStackTrace()[2]
+								.getMethodName() + "]", "name=" + name);
+
+			}//for (String name : listFiles)
+			
+		} else {//if (listFiles != null)
+
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "listFiles => null");
+			
+		}//if (listFiles != null)
+		
+	}//private void getFilesList()
 	
 }

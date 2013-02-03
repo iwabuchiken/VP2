@@ -1,7 +1,8 @@
 a
 cd C:\WORKS\WS\WS_Android\VP2
-C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WS\WS_Android~\FM\VP2\VP2.mm
 gitk
+
+C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WS\WS_Android~\FM\VP2\VP2.mm
 
 pushd C:\Users\IwabuchiKen\Desktop
 
