@@ -67,4 +67,9 @@ public class CONST {
 	 *********************************/
 	public static String opt_menu_main_1_clear_table = "Clear the table";
 	
+	/*********************************
+	 * Intent-related
+	 *********************************/
+	public static String intentMainActv_fileName = "intentMainActv_fileName";
+	
 }//public class CONST

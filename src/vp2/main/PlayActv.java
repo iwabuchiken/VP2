@@ -95,10 +95,16 @@ public class PlayActv extends Activity
 	    super.onCreate(savedInstanceState);
 	
 	    // Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onCreate()");
 
+		// Log
+		Log.d("PlayActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "message");
 
 		B6_v_1_0();
 		
@@ -192,7 +198,7 @@ public class PlayActv extends Activity
 	private void B5_v_1_0() {
 		// TODO Auto-generated method stub
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "sdk=" + android.os.Build.VERSION.SDK_INT);
 		
@@ -219,11 +225,104 @@ public class PlayActv extends Activity
 		B4_v_1_0_setup_listview();
 		
 		// Start media
-		B3_v_1_1_start_media();
+		startMedia();
+//		B3_v_1_1_start_media();
 		
 	}//private void B4_v_1_0()
 	
 	
+	private void startMedia() {
+		/*********************************
+		 * Get intent
+		 *********************************/
+		Intent i = this.getIntent();
+		
+		String mediaName = i.getStringExtra(CONST.intentMainActv_fileName);
+		
+		// Log
+		Log.d("PlayActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "mediaName=" + mediaName);
+		
+		/*********************************
+		 * Setup player
+		 *********************************/
+		vvPlayer = (VideoView) findViewById(R.id.main_actv_vv);
+		
+		//    	String media_name = "test.mp4";
+			String media_name = "test2.mp4";
+			
+			String dpath_media = StringUtils.join(new String[]{
+					CONST.DIRPATH_MEDIA,
+//					media_name},
+					mediaName},
+					File.separator
+			);//String dpath_media
+		//    	
+		//    	Uri uri = Uri.parse(url_s);
+			
+		//    	vvPlayer.setVideoURI(uri);
+			vvPlayer.setVideoPath(dpath_media);
+			
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]",
+				"Video path=" + dpath_media);
+			
+			vvPlayer.setMediaController(new MediaController(this));
+			
+			vvPlayer.requestFocus();
+			
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Focus requested");
+			
+			// B2 v-2.0
+			vvPlayer.setOnPreparedListener(
+				new OnPreparedListener(){
+		
+					public void onPrepared(MediaPlayer arg0) {
+						// TODO Auto-generated method stub
+				    	try {
+				    		
+				    		// Log
+							Log.d("PlayActv.java" + "["
+									+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+									+ "]", "vvPlayer.getDuration()=" + vvPlayer.getDuration());
+				    		
+							vvPlayer.start();
+							
+							// Log
+							Log.d("MainActv.java"
+									+ "["
+									+ Thread.currentThread().getStackTrace()[2]
+											.getLineNumber() + "]", "Calling task...");
+							
+		//						new Task_Progress().execute();
+							task_prog = new Task_Progress();
+							
+							task_prog.execute();
+							
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							// Log
+							Log.e("MainActv.java" + "["
+									+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+									+ "]", "Exception: " + e.toString());
+						}//try
+		
+					}//public void onPrepared(MediaPlayer arg0)
+				
+				}//new OnPreparedListener()
+			);//vvPlayer.setOnPreparedListener
+
+	}//private void startMedia()
+
+
 	private void B4_v_1_0_setup_listview() {
 		
 		srt_list = Methods_VP2.get_srt_list_from_db(this);
@@ -233,7 +332,7 @@ public class PlayActv extends Activity
 		// Log
 		if (srt_list != null) {
 	
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "srt_list.size()=" + srt_list.size());
 			
@@ -242,7 +341,7 @@ public class PlayActv extends Activity
 		} else {//if (srt_list != null)
 	
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "srt_list == null");
 			
@@ -258,14 +357,14 @@ public class PlayActv extends Activity
 		if (aAdapter == null) {
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "aAdapter == null");
 			
 		} else {//if (aAdapter == null)
 
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "aAdapter != null");
 
@@ -277,14 +376,14 @@ public class PlayActv extends Activity
 		if (lv_srt_items == null) {
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "lv_srt_items == null");
 			
 		} else {//if (lv_srt_items == null)
 
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "lv_srt_items != null");
 
@@ -334,7 +433,7 @@ public class PlayActv extends Activity
 		setContentView(R.layout.activity_play_actv_vv);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Start => B2_v_1_2()");
 		
@@ -342,7 +441,7 @@ public class PlayActv extends Activity
 		B2_v_1_1_set_listeners();
 		
 	//    	// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]", "Listeners => Set");
 		
@@ -374,7 +473,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoPath(dpath_media);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]",
 			"Video path=" + dpath_media);
@@ -392,7 +491,7 @@ public class PlayActv extends Activity
 			    	try {
 			    		
 			    		// Log
-						Log.d("MainActv.java" + "["
+						Log.d("PlayActv.java" + "["
 								+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 								+ "]", "vvPlayer.getDuration()=" + vvPlayer.getDuration());
 			    		
@@ -443,7 +542,7 @@ public class PlayActv extends Activity
 //		);//vvPlayer.setOnCompletionListener
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 	
@@ -474,19 +573,19 @@ public class PlayActv extends Activity
 //	    sh.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 //	    
 //	    // Log
-//		Log.d("MainActv.java" + "["
+//		Log.d("PlayActv.java" + "["
 //				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //				+ "]", "sh.toString()=" + sh.toString());
 //	    
 //		if ((sh.getSurface() != null)) {
 //			// Log
-//			Log.d("MainActv.java" + "["
+//			Log.d("PlayActv.java" + "["
 //					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //					+ "]", "Surface obtained");
 //		} else {//if ((sh.getSurface() != null))
 //			
 //			// Log
-//			Log.d("MainActv.java" + "["
+//			Log.d("PlayActv.java" + "["
 //					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //					+ "]", "sh.getSurface() == null");
 //			
@@ -496,7 +595,7 @@ public class PlayActv extends Activity
 //	    mp.setDisplay(sh);
 //	    
 //	    // Log
-//		Log.d("MainActv.java" + "["
+//		Log.d("PlayActv.java" + "["
 //				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //				+ "]", "Done => mp.setDisplay(sh)");
 //	    
@@ -599,7 +698,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoPath(dpath_media);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]",
 			"Video path=" + dpath_media);
@@ -623,14 +722,14 @@ public class PlayActv extends Activity
 	//			}});
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 		
 		try {
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "vvPlayer.getDuration()=" + vvPlayer.getDuration());
 			
@@ -690,7 +789,7 @@ public class PlayActv extends Activity
 		setContentView(R.layout.activity_play_actv_vv);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Start => B2_v_1_2()");
 		
@@ -698,7 +797,7 @@ public class PlayActv extends Activity
 		B2_v_1_1_set_listeners();
 		
 	//    	// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]", "Listeners => Set");
 		
@@ -710,7 +809,7 @@ public class PlayActv extends Activity
 		B2_v_1_2_start_media();
 		
 	//    	// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]", "Media dir => Set");
 		
@@ -737,7 +836,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoPath(dpath_media);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]",
 			"Video path=" + dpath_media);
@@ -755,14 +854,14 @@ public class PlayActv extends Activity
 			}});
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 		
 		try {
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "vvPlayer.getDuration()=" + vvPlayer.getDuration());
 			
@@ -771,7 +870,7 @@ public class PlayActv extends Activity
 	//			new Thread(this).start();
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Thread started");
 			
@@ -796,12 +895,12 @@ public class PlayActv extends Activity
 		B2_v_1_1_setup_media_dir();
 		
 	//    	// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]", "External path=" + Environment.getExternalStorageDirectory().getPath());
 	//    	
 	//		// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]", "FilesDir=" + this.getFilesDir().getPath());
 	}//private void B2_v_1_1()
@@ -813,14 +912,14 @@ public class PlayActv extends Activity
 		if (dpath_media.exists()) {
 	
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Media dir => exists");
 			
 		} else {//if (dpath_media.exists())
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Media dir => Doesn't exist");
 			
@@ -896,7 +995,7 @@ public class PlayActv extends Activity
 //	    mp.setDisplay(sh);
 //	    
 //	    // Log
-//		Log.d("MainActv.java" + "["
+//		Log.d("PlayActv.java" + "["
 //				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //				+ "]", "Done => mp.setDisplay(sh)");
 //	    
@@ -982,7 +1081,7 @@ public class PlayActv extends Activity
 		// File exists?
 		File f = new File(src_path);
 		
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "File exists? => " + f.exists());
 		
@@ -1019,21 +1118,21 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoPath(src_path);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Video path set=" + src_path);
 		
 		vvPlayer.setMediaController(new MediaController(this));
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Controller set");
 		
 		vvPlayer.requestFocus();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 	
@@ -1046,7 +1145,7 @@ public class PlayActv extends Activity
 		// Log
 		File f = new File(src_path);
 		
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "File exists? => " + f.exists());
 		
@@ -1057,7 +1156,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoPath(src_path);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Video path set=" + src_path);
 		
@@ -1066,7 +1165,7 @@ public class PlayActv extends Activity
 		vvPlayer.requestFocus();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 		
@@ -1100,7 +1199,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoURI(uri);
 	
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]",
 			"Video uri=" + uri.toString());
@@ -1110,7 +1209,7 @@ public class PlayActv extends Activity
 		vvPlayer.requestFocus();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 		
@@ -1149,13 +1248,13 @@ public class PlayActv extends Activity
 		} catch(IOException e){
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Exception: " + e.toString());
 		}
 	
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "result=" + result);
 		
@@ -1169,7 +1268,7 @@ public class PlayActv extends Activity
 		// Log
 		File f = new File(src_path);
 		
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "File exists? => " + f.exists());
 		
@@ -1178,7 +1277,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoPath(src_path);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Video path set=" + src_path);
 		
@@ -1187,7 +1286,7 @@ public class PlayActv extends Activity
 		vvPlayer.requestFocus();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Focus requested");
 		
@@ -1206,7 +1305,7 @@ public class PlayActv extends Activity
 	private void B1_v_1_0() {
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Starts => B1_v_1_0()");
 		
@@ -1223,7 +1322,7 @@ public class PlayActv extends Activity
 		vvPlayer.setVideoURI(Uri.parse(url_string));
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "URI set");
 		
@@ -1232,7 +1331,7 @@ public class PlayActv extends Activity
 		vvPlayer.setMediaController(new MediaController(this));
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Controller set");
 		
@@ -1250,7 +1349,7 @@ public class PlayActv extends Activity
 //	private void main_v_1_0() {
 //		
 //    	// Log
-//		Log.d("MainActv.java" + "["
+//		Log.d("PlayActv.java" + "["
 //				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //				+ "]", "Starts => main_v_1_0()");
 //    	
@@ -1266,7 +1365,7 @@ public class PlayActv extends Activity
 //        mp.setDisplay(sh);
 //        
 //        // Log
-//		Log.d("MainActv.java" + "["
+//		Log.d("PlayActv.java" + "["
 //				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //				+ "]", "Done => mp.setDisplay(sh)");
 //        
@@ -1368,7 +1467,7 @@ public class PlayActv extends Activity
 		int id = item.getItemId();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "id=" + id);
 		
@@ -1431,7 +1530,7 @@ public class PlayActv extends Activity
 		// TODO Auto-generated method stub
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Surface created");
 		
@@ -1444,7 +1543,7 @@ public class PlayActv extends Activity
 	//		String mediaPath = "http://www.youtube.com/watch?v=Auufbu_ZdDI";
 		
 	//		// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]",
 	//				"Environment.getExternalStorageDirectory().getPath()="
@@ -1462,7 +1561,7 @@ public class PlayActv extends Activity
 	//			mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
 	//			
 	//			// Log
-	//			Log.d("MainActv.java" + "["
+	//			Log.d("PlayActv.java" + "["
 	//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//					+ "]", "Data source set");
 	//			
@@ -1470,7 +1569,7 @@ public class PlayActv extends Activity
 	//			mp.prepare();
 	//			
 	//			// Log
-	//			Log.d("MainActv.java" + "["
+	//			Log.d("PlayActv.java" + "["
 	//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//					+ "]", "mp prepared");
 	//			
@@ -1496,7 +1595,7 @@ public class PlayActv extends Activity
 		}, File.separator);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "path=" + path);
 		
@@ -1506,7 +1605,7 @@ public class PlayActv extends Activity
 		mp.setDisplay(holder);
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Done => setDisplay");
 		
@@ -1528,7 +1627,7 @@ public class PlayActv extends Activity
 		// TODO Auto-generated method stub
 	
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "Surface => Destroyed");
 		
@@ -1542,7 +1641,7 @@ public class PlayActv extends Activity
 	
 	public boolean onDestroy(MediaPlayer mp, int what, int extra) {
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onDestroy()");
 		
@@ -1557,7 +1656,7 @@ public class PlayActv extends Activity
 			task_prog.cancel(true);
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "task_prog => Cancelled");
 			
@@ -1574,7 +1673,7 @@ public class PlayActv extends Activity
 		super.onPause();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onPause()");
 	}
@@ -1586,7 +1685,7 @@ public class PlayActv extends Activity
 		super.onStop();
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "onStop()");
 		
@@ -1603,14 +1702,14 @@ public class PlayActv extends Activity
 		} else {//if (task_prog != null)
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "task_prog == null");
 			
 		}//if (task_prog != null)
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "task_prog => Cancelled");
 	
@@ -1619,14 +1718,14 @@ public class PlayActv extends Activity
 	//			task_prog.cancel(true);
 	//			
 	//			// Log
-	//			Log.d("MainActv.java" + "["
+	//			Log.d("PlayActv.java" + "["
 	//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//					+ "]", "task_prog => Cancelled");
 	//			
 	//		} else {//if (task_prog == condition)
 	//			
 	//			// Log
-	//			Log.d("MainActv.java" + "["
+	//			Log.d("PlayActv.java" + "["
 	//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//					+ "]", "task_prog => Already cancelled");
 	//			
@@ -1643,14 +1742,14 @@ public class PlayActv extends Activity
 		if (vvPlayer != null) {
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "vvPlayer.getDuration()=" + vvPlayer.getDuration());
 			
 		} else {//if (vvPlayer != null)
 			
 			// Log
-			Log.d("MainActv.java" + "["
+			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "vvPlayer != null");
 			
@@ -1690,7 +1789,7 @@ public class PlayActv extends Activity
 	public static void show_progress(int currentPosition) {
 		// TODO Auto-generated method stub
 	//		// Log
-	//		Log.d("MainActv.java" + "["
+	//		Log.d("PlayActv.java" + "["
 	//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 	//				+ "]", "Starting => show_progress()");
 			
@@ -1727,7 +1826,7 @@ public class PlayActv extends Activity
 		// TODO Auto-generated method stub
 		
 		// Log
-		Log.d("MainActv.java" + "["
+		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "itemId=" + itemId + "/" + "positioni=" + position);
 		

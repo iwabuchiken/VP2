@@ -1,5 +1,5 @@
 package vp2.main;
-	
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -53,6 +53,7 @@ import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -564,5 +565,65 @@ public class MainActv extends ListActivity {
 		}//if (listFiles != null)
 		
 	}//private void getFilesList()
+
+
+
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		super.onListItemClick(l, v, position, id);
+		
+		/*********************************
+		 * Setup
+		 *********************************/
+		ListView lv = this.getListView();
+		
+		String itemName = (String) lv.getItemAtPosition(position);
+		
+		String mediaFilePath = StringUtils.join(
+				(new String[]{
+						CONST.DIRPATH_MEDIA,
+					itemName}),
+					File.separator);
+		
+		File mediaFile = new File(mediaFilePath);
+		
+		if (!mediaFile.exists()) {
+
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "File doesn't exitst: " + mediaFile.getName());
+			
+			return;
+			
+		} else {//if (!target.exists())
+			
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "File=" + mediaFile.getAbsolutePath());
+			
+		}//if (!target.exists())
+		
+		/*********************************
+		 * Prepare intent
+		 *********************************/
+		Intent i = new Intent();
+		
+		i.setClass(this, PlayActv.class);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		i.putExtra(CONST.intentMainActv_fileName, itemName);
+		
+		this.startActivity(i);
+
+		
+	}//protected void onListItemClick(ListView l, View v, int position, long id)
 	
 }
