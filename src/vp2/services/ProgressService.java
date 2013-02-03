@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import vp2.main.MainActv;
+import vp2.main.PlayActv;
 
 import android.app.Service;
 import android.content.Context;
@@ -134,13 +135,13 @@ public class ProgressService extends Service {
 								// TODO Auto-generated method stub
 								
 								int cur_pos = 0;
-								int total = MainActv.vvPlayer.getDuration();
+								int total = PlayActv.vvPlayer.getDuration();
 								
-								while (MainActv.vvPlayer!=null && cur_pos<total) {
+								while (PlayActv.vvPlayer!=null && cur_pos<total) {
 									try {
 										
 										Thread.sleep(1000);
-										cur_pos= MainActv.vvPlayer.getCurrentPosition();
+										cur_pos= PlayActv.vvPlayer.getCurrentPosition();
 										
 										// Log
 										Log.d("ProgressService.java"
@@ -177,7 +178,7 @@ public class ProgressService extends Service {
 									
 //									tv_progress.setText(String.valueOf(currentPosition));
 									
-								}//while (MainActv.vvPlayer!=null && currentPosition<total)
+								}//while (PlayActv.vvPlayer!=null && currentPosition<total)
 
 								// Log
 								Log.d("ProgressService.java"

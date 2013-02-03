@@ -12,12 +12,15 @@ public class CONST {
 	 * Path
 	 *********************************/
 	
-	public static final String DIRPATH_ROOT = "vp";
+//	public static final String DIRPATH_ROOT = "vp";
+	public static final String DIRPATH_ROOT = "vp2";
+	
+	public static final String DIRPATH_media_ROOT = "media";
 	
 	public static final String DIRPATH_MEDIA = 
 				Environment.getExternalStorageDirectory().getPath()
 				+ File.separator + DIRPATH_ROOT
-				+ File.separator + "media";
+				+ File.separator + DIRPATH_media_ROOT;
 			
 	public static List<Long> srt_data = new ArrayList<Long>();
 	

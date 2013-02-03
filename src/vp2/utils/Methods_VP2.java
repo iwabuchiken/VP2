@@ -62,6 +62,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import vp2.items.SRTItem;
 import vp2.listeners.dialog.DialogListener;
 import vp2.main.MainActv;
+import vp2.main.PlayActv;
 
 // REF=> http://commons.apache.org/net/download_net.cgi
 //REF=> http://www.searchman.info/tips/2640.html
@@ -290,33 +291,33 @@ public class Methods_VP2 {
 		wdb.close();
 
 		//Clear the list,
-		if (MainActv.srt_list != null) {
+		if (PlayActv.srt_list != null) {
 		
 			//Clear the list,
-			MainActv.srt_list.clear();
+			PlayActv.srt_list.clear();
 			
-		} else {//if (MainActv.srt_list != null)
+		} else {//if (PlayActv.srt_list != null)
 			
 			// Log
 			Log.d("Methods_VP2.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "MainActv.srt_list == null");
+					+ "]", "PlayActv.srt_list == null");
 			
-		}//if (MainActv.srt_list != null)
+		}//if (PlayActv.srt_list != null)
 		
-		if (MainActv.aAdapter != null) {
+		if (PlayActv.aAdapter != null) {
 			
 			//Notify the adapter of the change
-			MainActv.aAdapter.notifyDataSetChanged();
+			PlayActv.aAdapter.notifyDataSetChanged();
 			
-		} else {//if (MainActv.srt_list != null)
+		} else {//if (PlayActv.srt_list != null)
 			
 			// Log
 			Log.d("Methods_VP2.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "MainActv.aAdapter == null");
+					+ "]", "PlayActv.aAdapter == null");
 			
-		}//if (MainActv.srt_list != null)
+		}//if (PlayActv.srt_list != null)
 		
 	}//public static void clear_table_main(Activity actv)
 

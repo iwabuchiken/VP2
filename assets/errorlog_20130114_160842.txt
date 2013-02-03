@@ -1,0 +1,33 @@
+01-14 16:07:07.820: E/AndroidRuntime(14274): FATAL EXCEPTION: main
+01-14 16:07:07.820: E/AndroidRuntime(14274): java.lang.RuntimeException: Unable to start activity ComponentInfo{vp2.main/vp2.main.MainActv}: java.util.regex.PatternSyntaxException: Syntax error in regexp pattern near index 1:
+01-14 16:07:07.820: E/AndroidRuntime(14274): *.mp4
+01-14 16:07:07.820: E/AndroidRuntime(14274):  ^
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1956)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1981)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.ActivityThread.access$600(ActivityThread.java:123)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1147)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.os.Looper.loop(Looper.java:137)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.ActivityThread.main(ActivityThread.java:4424)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.lang.reflect.Method.invokeNative(Native Method)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.lang.reflect.Method.invoke(Method.java:511)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at dalvik.system.NativeStart.main(Native Method)
+01-14 16:07:07.820: E/AndroidRuntime(14274): Caused by: java.util.regex.PatternSyntaxException: Syntax error in regexp pattern near index 1:
+01-14 16:07:07.820: E/AndroidRuntime(14274): *.mp4
+01-14 16:07:07.820: E/AndroidRuntime(14274):  ^
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.util.regex.Pattern.compileImpl(Native Method)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.util.regex.Pattern.compile(Pattern.java:400)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.util.regex.Pattern.<init>(Pattern.java:383)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.util.regex.Pattern.matches(Pattern.java:413)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.lang.String.matches(String.java:1765)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at vp2.main.MainActv$1.accept(MainActv.java:204)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at java.io.File.list(File.java:775)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at vp2.main.MainActv.B8_v_1_1_get_files_list(MainActv.java:199)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at vp2.main.MainActv.B8_v_1_1(MainActv.java:96)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at vp2.main.MainActv.onCreate(MainActv.java:77)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.Activity.performCreate(Activity.java:4465)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1049)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1920)
+01-14 16:07:07.820: E/AndroidRuntime(14274): 	... 11 more

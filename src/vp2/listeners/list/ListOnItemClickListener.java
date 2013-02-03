@@ -2,6 +2,7 @@ package vp2.listeners.list;
 
 import vp2.items.SRTItem;
 import vp2.main.MainActv;
+import vp2.main.PlayActv;
 import vp2.utils.Methods;
 import vp2.utils.Tags;
 import android.app.Activity;
@@ -73,22 +74,22 @@ public class ListOnItemClickListener implements OnItemClickListener {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "start_t=" + start_t);
 		
-		if (MainActv.vvPlayer != null && MainActv.vvPlayer.isPlaying()) {
+		if (PlayActv.vvPlayer != null && PlayActv.vvPlayer.isPlaying()) {
 			
-//			MainActv.vvPlayer.pause();
+//			PlayActv.vvPlayer.pause();
 			
-			MainActv.vvPlayer.seekTo(start_t.intValue());
+			PlayActv.vvPlayer.seekTo(start_t.intValue());
 			
-//			MainActv.vvPlayer.resume();
+//			PlayActv.vvPlayer.resume();
 			
-		} else {//if (MainActv.vvPlayer != null &&  == )
+		} else {//if (PlayActv.vvPlayer != null &&  == )
 			
 			// Log
 			Log.d("ListOnItemClickListener.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "else");
 			
-		}//if (MainActv.vvPlayer != null &&  == )
+		}//if (PlayActv.vvPlayer != null &&  == )
 		
 	}//private void case_actv_main_lv(AdapterView<?> parent, View v, int position)
 

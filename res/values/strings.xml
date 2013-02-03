@@ -8,14 +8,6 @@
     <string name="menu_get_current_position">Get current position</string>
     <string name="menu_set_position">Set position</string>
     
-    <!-- activity_main_actv_vv.xml -->
-    	<string name="actv_main_bt_start">Start point</string>
-    	<string name="actv_main_bt_end">End point</string>
-    	<string name="actv_main_bt_export">Export data</string>
-
-    <!-- /menu/activity_main_actv.xml -->
-    	<string name="menu_main_clear_table">Clear table</string>
-
     <string-array name="action_list">
         <item>FilterMode</item>
         <item>Non-FilterMode</item>
@@ -25,5 +17,11 @@
 	    <string-array name="option_menu_labels_actv_main">
 	        <item>Clear the table</item>
 	    </string-array>
+
+    <!-- activity_play_actv_vv.xml -->
+    	<string name="actv_play_bt_start">Start point</string>
+    	<string name="actv_play_bt_end">End point</string>
     
+    <!-- actv_main.xml -->
+    	<string name="actv_main_bt_option">Options</string>
 </resources>

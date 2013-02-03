@@ -1,6 +1,7 @@
 package vp2.tasks;
 
 import vp2.main.MainActv;
+import vp2.main.PlayActv;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -19,7 +20,7 @@ public class Task_Progress extends AsyncTask<Void, Integer, Void> {
 		doInBackground_B3_v_1_1a();
 		
 //		doInBackground_B3_v_1_1();
-//		int duration = MainActv.vvPlayer.getDuration();
+//		int duration = PlayActv.vvPlayer.getDuration();
 //		
 //		int current = 0;
 //		
@@ -30,7 +31,7 @@ public class Task_Progress extends AsyncTask<Void, Integer, Void> {
 //		
 //		do {
 //			
-//			current = MainActv.vvPlayer.getCurrentPosition();
+//			current = PlayActv.vvPlayer.getCurrentPosition();
 //			
 //			// Log
 //			Log.d("Task_Progress.java" + "["
@@ -76,11 +77,11 @@ public class Task_Progress extends AsyncTask<Void, Integer, Void> {
 //				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //				+ "]", "current=" + values[0]);
 		
-		MainActv.show_progress(values[0]);
+		PlayActv.show_progress(values[0]);
 	}
 
 	private void doInBackground_B3_v_1_1a() {
-		int duration = MainActv.vvPlayer.getDuration();
+		int duration = PlayActv.vvPlayer.getDuration();
 		
 		int current = 0;
 		
@@ -91,7 +92,7 @@ public class Task_Progress extends AsyncTask<Void, Integer, Void> {
 		
 		do {
 			
-			current = MainActv.vvPlayer.getCurrentPosition();
+			current = PlayActv.vvPlayer.getCurrentPosition();
 			
 //			// Log
 //			Log.d("Task_Progress.java" + "["
@@ -130,7 +131,7 @@ public class Task_Progress extends AsyncTask<Void, Integer, Void> {
 	}//private void doInBackground_B3_v_1_1a()
 
 	private void doInBackground_B3_v_1_1() {
-		int duration = MainActv.vvPlayer.getDuration();
+		int duration = PlayActv.vvPlayer.getDuration();
 		
 		int current = 0;
 		
@@ -141,7 +142,7 @@ public class Task_Progress extends AsyncTask<Void, Integer, Void> {
 		
 		do {
 			
-			current = MainActv.vvPlayer.getCurrentPosition();
+			current = PlayActv.vvPlayer.getCurrentPosition();
 			
 			// Log
 			Log.d("Task_Progress.java" + "["

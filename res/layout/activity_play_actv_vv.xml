@@ -14,34 +14,28 @@
         >
 
         <Button
-            android:id="@+id/actv_main_bt_start"
+            android:id="@+id/actv_play_bt_start"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             
-            android:text="@string/actv_main_bt_start" 
+            android:background="@color/white"
+            android:textColor="@color/black"
+            
+            android:text="@string/actv_play_bt_start" 
             android:textSize="20dp"
             android:layout_margin="10dp"
             
             />
 
         <Button
-            android:id="@+id/actv_main_bt_end"
+            android:id="@+id/actv_play_bt_end"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            
-            android:text="@string/actv_main_bt_end"
-            android:textSize="20dp"
-            
-            android:layout_margin="10dp"
-            
-            />
 
-        <Button
-            android:id="@+id/actv_main_bt_export"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/black"
             
-            android:text="@string/actv_main_bt_export"
+            android:text="@string/actv_play_bt_end"
             android:textSize="20dp"
             
             android:layout_margin="10dp"
@@ -49,7 +43,7 @@
             />
 
         <TextView
-            android:id="@+id/actv_main_tv_progress"
+            android:id="@+id/actv_play_tv_progress"
             
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,7 +66,7 @@
         android:orientation="horizontal" >
 
         <ListView
-            android:id="@+id/actv_main_lv"
+            android:id="@+id/actv_play_lv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" >

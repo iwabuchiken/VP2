@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringUtils;
 
 import vp2.adapters.SRTListAdapter;
 import vp2.main.MainActv;
+import vp2.main.PlayActv;
 import vp2.main.R;
 import vp2.utils.CONST;
 import vp2.utils.DBUtils;
@@ -130,18 +131,18 @@ public class ButtonOnClickListener implements OnClickListener {
 
 	private void case_actv_main_bt_end() {
 
-		if (MainActv.vvPlayer != null) {
+		if (PlayActv.vvPlayer != null) {
 			
-			CONST.srt_data.add((long) MainActv.vvPlayer.getCurrentPosition());
+			CONST.srt_data.add((long) PlayActv.vvPlayer.getCurrentPosition());
 			
 			// Log
 			Log.d("ButtonOnClickListener.java"
 					+ "["
 					+ Thread.currentThread().getStackTrace()[2]
 							.getLineNumber() + "]",
-					"Stored => " + MainActv.vvPlayer.getCurrentPosition());
+					"Stored => " + PlayActv.vvPlayer.getCurrentPosition());
 			
-		} else {//if (MainActv.vvPlayer != null)
+		} else {//if (PlayActv.vvPlayer != null)
 			
 			CONST.srt_data.add((long) -1);
 			
@@ -152,7 +153,7 @@ public class ButtonOnClickListener implements OnClickListener {
 							.getLineNumber() + "]",
 					"Stored => " + -1);
 			
-		}//if (MainActv.vvPlayer != null)
+		}//if (PlayActv.vvPlayer != null)
 	
 	}//private void case_actv_main_bt_end()
 
@@ -160,18 +161,18 @@ public class ButtonOnClickListener implements OnClickListener {
 		
 		case_actv_main_bt_start_B4_v_1_0();
 		
-//		if (MainActv.vvPlayer != null) {
+//		if (PlayActv.vvPlayer != null) {
 //			
-//			CONST.srt_data.add((long) MainActv.vvPlayer.getCurrentPosition());
+//			CONST.srt_data.add((long) PlayActv.vvPlayer.getCurrentPosition());
 //			
 //			// Log
 //			Log.d("ButtonOnClickListener.java"
 //					+ "["
 //					+ Thread.currentThread().getStackTrace()[2]
 //							.getLineNumber() + "]",
-//					"Stored => " + MainActv.vvPlayer.getCurrentPosition());
+//					"Stored => " + PlayActv.vvPlayer.getCurrentPosition());
 //			
-//		} else {//if (MainActv.vvPlayer != null)
+//		} else {//if (PlayActv.vvPlayer != null)
 //			
 //			CONST.srt_data.add((long) -1);
 //			
@@ -182,15 +183,15 @@ public class ButtonOnClickListener implements OnClickListener {
 //							.getLineNumber() + "]",
 //					"Stored => " + -1);
 //			
-//		}//if (MainActv.vvPlayer != null)
+//		}//if (PlayActv.vvPlayer != null)
 		
 	}//private void case_actv_main_bt_start()
 
 	private void case_actv_main_bt_start_B4_v_1_0() {
 		
-		if (MainActv.vvPlayer != null) {
+		if (PlayActv.vvPlayer != null) {
 			
-//			CONST.srt_data.add((long) MainActv.vvPlayer.getCurrentPosition());
+//			CONST.srt_data.add((long) PlayActv.vvPlayer.getCurrentPosition());
 			
 			DBUtils dbu = new DBUtils(actv, CONST.dbname_main);
 			
@@ -201,14 +202,14 @@ public class ButtonOnClickListener implements OnClickListener {
 					wdb,
 					CONST.tname_main,
 					CONST.cols_srt_data[0],
-					String.valueOf(MainActv.vvPlayer.getCurrentPosition()));
+					String.valueOf(PlayActv.vvPlayer.getCurrentPosition()));
 			
 			// Log
 			Log.d("ButtonOnClickListener.java"
 					+ "["
 					+ Thread.currentThread().getStackTrace()[2]
 							.getLineNumber() + "]",
-					"Stored => " + MainActv.vvPlayer.getCurrentPosition());
+					"Stored => " + PlayActv.vvPlayer.getCurrentPosition());
 			
 			wdb.close();
 			
@@ -220,72 +221,73 @@ public class ButtonOnClickListener implements OnClickListener {
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Refreshing the list view ...");
 			
-			if (MainActv.srt_list != null) {
+			if (PlayActv.srt_list != null) {
 				
-				MainActv.srt_list.clear();
+				PlayActv.srt_list.clear();
 				
-			}//if (MainActv.srt_list == condition)
-//			MainActv.srt_list.clear();
+			}//if (PlayActv.srt_list == condition)
+//			PlayActv.srt_list.clear();
 			
 			// Log
 			Log.d("ButtonOnClickListener.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "srt_list => Cleared");
 			
-//			MainActv.srt_list = Methods_vp2.get_srt_list_from_db(actv);
+//			PlayActv.srt_list = Methods_vp2.get_srt_list_from_db(actv);
 			
-			if (MainActv.srt_list != null) {
+			if (PlayActv.srt_list != null) {
 
-				MainActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+				PlayActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
 				
 				// Log
 				Log.d("ButtonOnClickListener.java" + "["
 						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-						+ "]", "MainActv.srt_list.size()=" + MainActv.srt_list.size());
+						+ "]", "PlayActv.srt_list.size()=" + PlayActv.srt_list.size());
 				
-				Methods_VP2.sort_list_start_time(MainActv.srt_list);
+				Methods_VP2.sort_list_start_time(PlayActv.srt_list);
 				
 				// Log
 				Log.d("ButtonOnClickListener.java" + "["
 						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 						+ "]", "List => Sorted");
 				
-				MainActv.aAdapter.notifyDataSetChanged();
+				PlayActv.aAdapter.notifyDataSetChanged();
 
 			} else {//if (condition)
 
-				MainActv.srt_list = Methods_VP2.get_srt_list_from_db(actv);
+				PlayActv.srt_list = Methods_VP2.get_srt_list_from_db(actv);
 				
-				Methods_VP2.sort_list_start_time(MainActv.srt_list);
+				Methods_VP2.sort_list_start_time(PlayActv.srt_list);
 				
-				MainActv.aAdapter = new SRTListAdapter(
+				PlayActv.aAdapter = new SRTListAdapter(
 						actv,
-						R.layout.activity_main_actv_vv,
-						MainActv.srt_list
+//						R.layout.activity_main_actv_vv,
+						R.layout.activity_play_actv_vv,
+						PlayActv.srt_list
 				);
 
-				MainActv.lv_srt_items.setAdapter(MainActv.aAdapter);
+				PlayActv.lv_srt_items.setAdapter(PlayActv.aAdapter);
 				
 			}//if (condition)
 			
-//			MainActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+//			PlayActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
 //			
 //			// Log
 //			Log.d("ButtonOnClickListener.java" + "["
 //					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-//					+ "]", "MainActv.srt_list.size()=" + MainActv.srt_list.size());
+//					+ "]", "PlayActv.srt_list.size()=" + PlayActv.srt_list.size());
 //			
-//			Methods_VP2.sort_list_start_time(MainActv.srt_list);
+//			Methods_VP2.sort_list_start_time(PlayActv.srt_list);
 //			
 //			// Log
 //			Log.d("ButtonOnClickListener.java" + "["
 //					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 //					+ "]", "List => Sorted");
 //			
-//			MainActv.aAdapter.notifyDataSetChanged();
+//			PlayActv.aAdapter.notifyDataSetChanged();
 //			
 			
-		} else {//if (MainActv.vvPlayer != null)
+		} else {//if (PlayActv.vvPlayer != null)
 			
 			CONST.srt_data.add((long) -1);
 			
@@ -296,7 +298,7 @@ public class ButtonOnClickListener implements OnClickListener {
 							.getLineNumber() + "]",
 					"Stored => " + -1);
 			
-		}//if (MainActv.vvPlayer != null)
+		}//if (PlayActv.vvPlayer != null)
 
 	}//private void case_actv_main_bt_start_B4_v_1_0()
 

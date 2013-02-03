@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    android:baselineAligned="false"
+    
+    android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/actv_main_ll_listview"
+            
+            android:layout_width="400dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/actv_main_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                
+                android:background="@color/white"
+		        android:textColor="@color/black"
+		        
+                android:textSize="25sp"
+                
+                >
+            </ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/actv_main_ll_opt_button"
+            
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            
+            android:layout_weight="1"
+            
+            android:gravity="right"
+            
+            android:background="@color/black"
+            android:orientation="vertical" >
+            
+                <Button
+			        android:id="@+id/actv_main_bt_option"
+			        android:layout_width="150sp"
+			        android:layout_height="wrap_content"
+			        
+			        android:background="@color/white"
+			        android:textColor="@color/black"
+			        
+			        android:layout_margin="30dp"
+			        
+			        android:text="@string/actv_main_bt_option"
+			        android:textSize="25sp" 
+			       
+			       
+			       />
+
+            
+        </LinearLayout>
+
+</LinearLayout>
