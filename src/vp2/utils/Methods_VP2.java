@@ -378,8 +378,10 @@ public class Methods_VP2 {
 		if (res == false) {
 			
 			// Log
-			Log.d("Methods.java" + "["
+			Log.d("Methods_VP2.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
 					+ "]", "getAllData() => Table doesn't exist: " + tname);
 			
 			wdb.close();

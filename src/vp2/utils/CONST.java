@@ -44,6 +44,20 @@ public class CONST {
 			"INTEGER",		"INTEGER",	"TEXT"
 		};
 
+	public static String[] cols_srt_data_full = 
+		{
+			android.provider.BaseColumns._ID,		// 0
+			"created_at", "modified_at",			// 1,2
+			"start_time", "end_time", "subtitle"	// 3,4,5
+		};
+//	"date_modified", "memos", "tags"};
+
+	public static String[] col_types_srt_data_full =
+		{
+			"INTEGER",
+			"INTEGER",	"INTEGER",
+			"INTEGER",	"INTEGER",	"TEXT"
+		};
 	public static String[] cols_bookmarkData = 
 		{
 			// Column number
