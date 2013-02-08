@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import vp2.items.BI;
+import vp2.items.SRTItem;
+
 import android.os.Environment;
 
 public class CONST {
@@ -25,34 +28,33 @@ public class CONST {
 	public static List<Long> srt_data = new ArrayList<Long>();
 	
 	/*********************************
-	 * DB
+	 * DB: Columns
 	 *********************************/
 	// Main data
 	public static String[] cols_srt_data = 
 		{
+			// Column number
+			// 3			4			5
 			"start_time", "end_time", "subtitle"
 		};
 //	"date_modified", "memos", "tags"};
 
 	public static String[] col_types_srt_data =
 		{
-			"INTEGER",	"INTEGER",	"TEXT"
+			"INTEGER",		"INTEGER",	"TEXT"
 		};
 
-	// Main data
-	public static String[] cols_srt_data_full = 
+	public static String[] cols_bookmarkData = 
 		{
-			android.provider.BaseColumns._ID,		// 0
-			"created_at", "modified_at",			// 1,2
-			"start_time", "end_time", "subtitle"	// 3,4,5
+			// Column number
+			// 3			4			5
+			"startTime", "endTime",		"title", "memo"
 		};
 //	"date_modified", "memos", "tags"};
 
-	public static String[] col_types_srt_data_full =
+	public static String[] colTypes_bookmarkData =
 		{
-			"INTEGER",
-			"INTEGER",	"INTEGER",
-			"INTEGER",	"INTEGER",	"TEXT"
+			"INTEGER",		"INTEGER",	"TEXT",	"TEXT"
 		};
 
 	/*********************************
@@ -62,6 +64,8 @@ public class CONST {
 	
 	public static String tname_main = "srt_data";
 	
+	
+	
 	/*********************************
 	 * Option menues
 	 *********************************/
@@ -70,6 +74,15 @@ public class CONST {
 	/*********************************
 	 * Intent-related
 	 *********************************/
-	public static String intentMainActv_fileName = "intentMainActv_fileName";
+//	public static String intentMainActv_fileName = "intentMainActv_fileName";
+	
+	public static enum intent {
+		mainActv_fileName
+	}
+	
+	/*********************************
+	 * List-related
+	 *********************************/
+	public static List<BI> bookmarkList = null;
 	
 }//public class CONST

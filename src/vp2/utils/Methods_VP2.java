@@ -59,6 +59,7 @@ import android.os.Looper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
 
+import vp2.items.BI;
 import vp2.items.SRTItem;
 import vp2.listeners.dialog.DialogListener;
 import vp2.main.MainActv;
@@ -320,6 +321,149 @@ public class Methods_VP2 {
 		}//if (PlayActv.srt_list != null)
 		
 	}//public static void clear_table_main(Activity actv)
+
+
+	
+	public static String convertItemName2TableName(Activity actv,
+			String itemName) {
+		
+		String[] tokens = itemName.split("\\.");
+		
+		// Log
+		Log.d("Methods_VP2.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "tokens.length=" + tokens.length);
+		
+		if (tokens.length < 2) {
+			
+			return itemName.replace(" ", "_");
+			
+		}//if (tokens.length == condition)
+		
+		
+		
+//		String trunk = Methods.joinArray(tokens, 0, tokens.length - 1);
+		String trunk = Methods.joinArray(tokens, 0, tokens.length - 2);
+		
+		return trunk.replace(" ", "_");
+		
+	}//public static String convertItemName2TableName(
+
+
+
+	public static List<BI> getBookmarkList(Activity actv, String tableName) {
+		// TODO Auto-generated method stub
+		DBUtils dbu = new DBUtils(actv, CONST.dbname_main);
+		
+		//
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+
+		// Table name
+		String tname = tableName;
+		
+		/*----------------------------
+		 * 0. Table exists?
+			----------------------------*/
+		// Log
+		Log.d("Methods_VP2.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "tableName=" + tname);
+		
+		boolean res = dbu.tableExists(wdb, tname);
+		
+		if (res == false) {
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "getAllData() => Table doesn't exist: " + tname);
+			
+			wdb.close();
+			
+			return null;
+			
+		}//if (res == false)
+
+		// Query
+		//
+		String sql = "SELECT * FROM " + tname;
+		
+		Cursor c = null;
+		
+		try {
+			
+			c = wdb.rawQuery(sql, null);
+			
+//			actv.startManagingCursor(c);
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getCount()=" + c.getCount());
+			
+		} catch (Exception e) {
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+			
+			wdb.close();
+			
+			return null;
+		}
+
+		// If no record, then return null
+		if (c.getCount() < 1) {
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getCount() < 1");
+			
+			wdb.close();
+			
+			return null;
+			
+		}//if (c.getCount() == condition)
+		
+		// Construct a list
+		List<BI> bookmarkList = new ArrayList<BI>();
+		
+		c.moveToFirst();
+		
+		for (int i = 0; i < c.getCount(); i++) {
+			
+			BI item = new BI(
+					c.getLong(2 + Methods.getArrayIndex(
+									CONST.cols_bookmarkData,
+									"startTime")),
+					c.getLong(2 + Methods.getArrayIndex(
+									CONST.cols_bookmarkData,
+									"endTime")),
+					c.getString(2 + Methods.getArrayIndex(
+							CONST.cols_bookmarkData,
+							"title")),
+					c.getString(2 + Methods.getArrayIndex(
+							CONST.cols_bookmarkData,
+							"memo")),
+					c.getLong(0)	// database id
+			);
+			
+			bookmarkList.add(item);
+			
+			c.moveToNext();
+		}
+		
+		// Close db
+		wdb.close();
+		
+		return bookmarkList;
+		
+	}//public static List<BI> getBookmarkList(Activity actv, String tableName)
 
 	
 	

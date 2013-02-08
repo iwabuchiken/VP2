@@ -467,6 +467,64 @@ public class Methods {
 		return cal.getTime().getTime();
 		
 	}//private long getMillSeconds_now(int year, int month, int date)
-	
+
+	public static String joinArray(String[] targetArray, int start, int end) {
+		// TODO Auto-generated method stub
+		if (start > end) {
+			
+			StringBuffer sb = new StringBuffer();
+			
+			for (int i = start; i < targetArray.length; i++) {
+				
+				sb.append(targetArray[i]);
+				
+			}//for (int i = i; i < tokens.length; i++)
+			
+			return sb.toString();
+			
+		}//if (variable == condition)
+		
+		if (end >= targetArray.length) {
+			
+			end = targetArray.length - 1;
+			
+		}//if (end == condition)
+		
+		if (start < 0) {
+			
+			start = 0;
+			
+		}//if (start == condition)
+		
+		StringBuffer sb = new StringBuffer();
+		
+		for (int i = start; i <= end; i++) {
+			
+			sb.append(targetArray[i]);
+			
+		}//for (int i = i; i < tokens.length; i++)
+		
+		return sb.toString();
+
+	}//public static String joinArray(String[] targetArray, int start, int end)
+
+	public static int getArrayIndex(String[] targetArray, String targetString) {
+		int index = -1;
+		
+		for (int i = 0; i < targetArray.length; i++) {
+			
+			if (targetArray[i].equals(targetString)) {
+				
+				index = i;
+				
+				break;
+				
+			}//if (targetArray[i] == )
+			
+		}//for (int i = 0; i < targetArray.length; i++)
+		
+		return index;
+	}//public static int getArrayIndex(String[] targetArray, String targetString)
+
 }//public class Methods
 

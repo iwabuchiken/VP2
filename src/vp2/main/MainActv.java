@@ -619,7 +619,8 @@ public class MainActv extends ListActivity {
 		
 		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		
-		i.putExtra(CONST.intentMainActv_fileName, itemName);
+//		i.putExtra(CONST.intentMainActv_fileName, itemName);
+		i.putExtra(CONST.intent.mainActv_fileName.name(), itemName);
 		
 		this.startActivity(i);
 
