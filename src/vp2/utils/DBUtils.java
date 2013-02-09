@@ -109,6 +109,8 @@ public class DBUtils extends SQLiteOpenHelper{
 			// Log
 			Log.d("DBUtils.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
 					+ "]", "Table exists => " + tableName);
 			
 			return false;
@@ -139,6 +141,8 @@ public class DBUtils extends SQLiteOpenHelper{
 		// Log
 		Log.d("DBUtils.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
 				+ "]", "sql => " + sb.toString());
 		
 		/*----------------------------
@@ -150,10 +154,11 @@ public class DBUtils extends SQLiteOpenHelper{
 			db.execSQL(sb.toString());
 			
 			// Log
-			Log.d(this.getClass().getName() + 
-					"["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "Table created => " + tableName);
+		Log.d("DBUtils.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "Table created => " + tableName);
 			
 			
 			return true;
@@ -162,6 +167,12 @@ public class DBUtils extends SQLiteOpenHelper{
 			Log.d(this.getClass().getName() + 
 					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]", 
 					"Exception => " + e.toString());
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "Exception => " + e.toString());
 			
 			return false;
 		}//try
@@ -351,9 +362,11 @@ public class DBUtils extends SQLiteOpenHelper{
 			return true;
 		} catch (Exception e) {
 			// Log
-			Log.e("DBUtils.java" + "["
-			+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-			+ "]", "Exception! => " + e.toString());
+		Log.d("DBUtils.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "Exception! => " + e.toString());
 			
 			return false;
 		}//try
@@ -395,9 +408,11 @@ public class DBUtils extends SQLiteOpenHelper{
 			
 		} catch (Exception e) {
 			// Log
-			Log.e("DBUtils.java" + "["
-			+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-			+ "]", "Exception! => " + e.toString());
+		Log.d("DBUtils.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "Exception! => " + e.toString());
 			
 			
 		}//try

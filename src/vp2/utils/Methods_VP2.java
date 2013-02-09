@@ -384,6 +384,13 @@ public class Methods_VP2 {
 					+ Thread.currentThread().getStackTrace()[2].getMethodName()
 					+ "]", "getAllData() => Table doesn't exist: " + tname);
 			
+
+			dbu.createTable(
+					wdb,
+					tableName,
+					CONST.cols_bookmarkData,
+					CONST.colTypes_bookmarkData);
+			
 			wdb.close();
 			
 			return null;
@@ -468,6 +475,7 @@ public class Methods_VP2 {
 	}//public static List<BI> getBookmarkList(Activity actv, String tableName)
 
 
+	
 	public static void sortBookmark_startTime(List<BI> bookmarkList) {
 		// TODO Auto-generated method stub
 		
