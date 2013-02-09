@@ -32,14 +32,18 @@ public final class R {
         public static final int yello=0x7f040009;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int bookmar_end_point=0x7f020000;
+        public static final int bookmar_end_point_touched=0x7f020001;
+        public static final int bookmark=0x7f020002;
+        public static final int bookmark_touched=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
         public static final int actv_main_bt_option=0x7f090007;
         public static final int actv_main_ll_listview=0x7f090005;
         public static final int actv_main_ll_opt_button=0x7f090006;
         public static final int actv_play_bt_end=0x7f090001;
-        public static final int actv_play_bt_start=0x7f090000;
+        public static final int actv_play_ib_start=0x7f090000;
         public static final int actv_play_lv=0x7f090003;
         public static final int actv_play_tv_progress=0x7f090002;
         public static final int listrow_actv_main_tv=0x7f090008;

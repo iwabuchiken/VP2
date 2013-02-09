@@ -94,9 +94,9 @@ public class ButtonOnClickListener implements OnClickListener {
 			
 			break;
 
-		case actv_main_bt_start:
+		case actv_main_ib_start:
 			
-			case_actv_main_bt_start();
+			case_actv_main_ib_start();
 			
 			break;
 
@@ -157,34 +157,17 @@ public class ButtonOnClickListener implements OnClickListener {
 	
 	}//private void case_actv_main_bt_end()
 
-	private void case_actv_main_bt_start() {
+	private void case_actv_main_ib_start() {
 		
-		case_actv_main_bt_start_B4_v_1_0();
+		// Log
+		Log.d("ButtonOnClickListener.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "Image button");
 		
-//		if (PlayActv.vvPlayer != null) {
-//			
-//			CONST.srt_data.add((long) PlayActv.vvPlayer.getCurrentPosition());
-//			
-//			// Log
-//			Log.d("ButtonOnClickListener.java"
-//					+ "["
-//					+ Thread.currentThread().getStackTrace()[2]
-//							.getLineNumber() + "]",
-//					"Stored => " + PlayActv.vvPlayer.getCurrentPosition());
-//			
-//		} else {//if (PlayActv.vvPlayer != null)
-//			
-//			CONST.srt_data.add((long) -1);
-//			
-//			// Log
-//			Log.d("ButtonOnClickListener.java"
-//					+ "["
-//					+ Thread.currentThread().getStackTrace()[2]
-//							.getLineNumber() + "]",
-//					"Stored => " + -1);
-//			
-//		}//if (PlayActv.vvPlayer != null)
-		
+//		case_actv_main_bt_start_B4_v_1_0();
+	
 	}//private void case_actv_main_bt_start()
 
 	private void case_actv_main_bt_start_B4_v_1_0() {

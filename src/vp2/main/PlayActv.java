@@ -51,6 +51,7 @@ import android.view.SurfaceView;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.SpinnerAdapter;
@@ -307,28 +308,28 @@ public class PlayActv extends Activity
 		 * Buttons
 		 *********************************/
 //		Button bt_export = (Button) findViewById(R.id.actv_play_bt_export);
-		Button bt_start = (Button) findViewById(R.id.actv_play_bt_start);
+		ImageButton ib_start = (ImageButton) findViewById(R.id.actv_play_ib_start);
 		Button bt_end = (Button) findViewById(R.id.actv_play_bt_end);
 	
 		/*********************************
 		 * Tags
 		 *********************************/
 //		bt_export.setTag(Tags.ButtonTags.actv_main_bt_export);
-		bt_start.setTag(Tags.ButtonTags.actv_main_bt_start);
+		ib_start.setTag(Tags.ButtonTags.actv_main_ib_start);
 		bt_end.setTag(Tags.ButtonTags.actv_main_bt_end);
 		
 		/*********************************
 		 * OnTouchListener
 		 *********************************/
 //		bt_export.setOnTouchListener(new ButtonOnTouchListener(this));
-		bt_start.setOnTouchListener(new ButtonOnTouchListener(this));
+		ib_start.setOnTouchListener(new ButtonOnTouchListener(this));
 		bt_end.setOnTouchListener(new ButtonOnTouchListener(this));
 		
 		/*********************************
 		 * OnClickListener
 		 *********************************/
 //		bt_export.setOnClickListener(new ButtonOnClickListener(this));
-		bt_start.setOnClickListener(new ButtonOnClickListener(this));
+		ib_start.setOnClickListener(new ButtonOnClickListener(this));
 		bt_end.setOnClickListener(new ButtonOnClickListener(this));
 		
 	}//private void setListeners()
@@ -470,124 +471,6 @@ public class PlayActv extends Activity
 		CONST.lv_bookMarks.setOnItemClickListener(new ListOnItemClickListener(this));
 		
 	}//private void setupListView()
-
-	private void setupBookmarkList_debug_v_1_1a_e1d1() {
-		
-		srt_list = Methods_VP2.get_srt_list_from_db(this);
-		
-		Intent i = this.getIntent();
-		
-		String itemName =
-				i.getStringExtra(CONST.intent.mainActv_fileName.name());
-
-		// Log
-		Log.d("PlayActv.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ ":"
-				+ Thread.currentThread().getStackTrace()[2].getMethodName()
-				+ "]", "itemName=" + itemName);
-		
-		/*********************************
-		 * Convert clip name into table name
-		 *********************************/
-		String tableName = Methods_VP2.convertItemName2TableName(this, itemName);
-		
-		// Log
-		Log.d("PlayActv.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ ":"
-				+ Thread.currentThread().getStackTrace()[2].getMethodName()
-				+ "]", "tableName=" + tableName);
-		
-		
-		CONST.bookmarkList = Methods_VP2.getBookmarkList(this, tableName);
-		
-		// Log
-		Log.d("PlayActv.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ ":"
-				+ Thread.currentThread().getStackTrace()[2].getMethodName()
-				+ "]", "CONST.bookmarkList=" + CONST.bookmarkList);
-		
-//		CONST.bookmarkList = Methods_VP2.getBookmarkList(this, );
-		
-//		Methods_VP2.sort_list_start_time(srt_list);
-		
-		// Log
-		if (srt_list != null) {
-	
-			Log.d("PlayActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "srt_list.size()=" + srt_list.size());
-			
-			Methods_VP2.sort_list_start_time(srt_list);
-	
-		} else {//if (srt_list != null)
-	
-			// Log
-			Log.d("PlayActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "srt_list == null");
-			
-		}//if (srt_list != null)
-		
-		//
-		aAdapter = new SRTListAdapter(
-				this,
-				R.layout.activity_play_actv_vv,
-				srt_list
-		);
-		
-		if (aAdapter == null) {
-			
-			// Log
-			Log.d("PlayActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "aAdapter == null");
-			
-		} else {//if (aAdapter == null)
-
-			// Log
-			Log.d("PlayActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "aAdapter != null");
-
-		}//if (aAdapter == null)
-		
-		//
-		lv_srt_items = (ListView) findViewById(R.id.actv_play_lv);
-
-		if (lv_srt_items == null) {
-			
-			// Log
-			Log.d("PlayActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "lv_srt_items == null");
-			
-		} else {//if (lv_srt_items == null)
-
-			// Log
-			Log.d("PlayActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "lv_srt_items != null");
-
-		}//if (lv_srt_items == null)
-
-		if (aAdapter != null) {
-			
-			lv_srt_items.setAdapter(aAdapter);
-			
-		}//if (aAdapter == condition)
-//		lv_srt_items.setAdapter(aAdapter);
-		
-		// Tag
-		lv_srt_items.setTag(Tags.ListTags.actv_main_lv);
-		
-		// Listener
-		lv_srt_items.setOnItemClickListener(new ListOnItemClickListener(this));
-		
-	}//private void setupListView()
-
 
 	private void startMedia() {
 		/*********************************
@@ -1305,7 +1188,8 @@ public class PlayActv extends Activity
 		 * Buttons
 		 *********************************/
 //		Button bt_export = (Button) findViewById(R.id.actv_play_bt_export);
-		Button bt_start = (Button) findViewById(R.id.actv_play_bt_start);
+//		Button bt_start = (Button) findViewById(R.id.actv_play_bt_start);
+		Button bt_start = (Button) findViewById(R.id.actv_play_ib_start);
 		Button bt_end = (Button) findViewById(R.id.actv_play_bt_end);
 	
 		/*********************************
