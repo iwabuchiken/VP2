@@ -42,7 +42,7 @@ public final class R {
         public static final int actv_main_bt_option=0x7f090007;
         public static final int actv_main_ll_listview=0x7f090005;
         public static final int actv_main_ll_opt_button=0x7f090006;
-        public static final int actv_play_bt_end=0x7f090001;
+        public static final int actv_play_ib_end=0x7f090001;
         public static final int actv_play_ib_start=0x7f090000;
         public static final int actv_play_lv=0x7f090003;
         public static final int actv_play_tv_progress=0x7f090002;

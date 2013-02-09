@@ -40,6 +40,7 @@ public class ButtonOnTouchListener implements OnTouchListener {
 		case MotionEvent.ACTION_DOWN:
 			
 			switch (tag) {
+				
 			
 			case actv_main_bt_export:
 
@@ -56,6 +57,26 @@ public class ButtonOnTouchListener implements OnTouchListener {
 			case actv_main_bt_end:
 
 				v.setBackgroundColor(Color.GRAY);
+				
+				break;
+
+			case actv_main_ib_start:
+
+				ImageButton ib = (ImageButton) v;
+				
+				ib = (ImageButton) v;
+				ib.setImageResource(
+						R.drawable.bookmark_touched);
+				
+				break;
+
+			case actv_main_ib_end:
+
+				ib = (ImageButton) v;
+				
+				ib = (ImageButton) v;
+				ib.setImageResource(
+						R.drawable.bookmar_end_point_touched);
 				
 				break;
 
@@ -85,6 +106,26 @@ public class ButtonOnTouchListener implements OnTouchListener {
 			case actv_main_bt_end:
 
 				v.setBackgroundColor(Color.WHITE);
+				
+				break;
+
+			case actv_main_ib_start:
+
+				ImageButton ib = (ImageButton) v;
+				
+				ib = (ImageButton) v;
+				ib.setImageResource(
+						R.drawable.bookmark);
+				
+				break;
+
+			case actv_main_ib_end:
+
+				ib = (ImageButton) v;
+				
+				ib = (ImageButton) v;
+				ib.setImageResource(
+						R.drawable.bookmar_end_point);
 				
 				break;
 

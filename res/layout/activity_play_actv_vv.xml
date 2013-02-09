@@ -17,22 +17,25 @@
             android:id="@+id/actv_play_ib_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+
+			android:layout_margin="5dp"
+            
+            
+            
             android:background="@color/black"
             android:src="@drawable/bookmark" />
 
-        <Button
-            android:id="@+id/actv_play_bt_end"
-            android:layout_width="150dp"
+        <ImageButton
+            android:id="@+id/actv_play_ib_end"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:background="@color/white"
-            android:textColor="@color/black"
             
-            android:text="@string/actv_play_bt_end"
-            android:textSize="20dp"
+            android:layout_margin="5dp"
             
-            android:layout_margin="10dp"
+            android:background="@color/black"
+            android:src="@drawable/bookmar_end_point"
+            
+            
             
             />
 

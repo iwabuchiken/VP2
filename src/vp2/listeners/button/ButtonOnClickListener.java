@@ -106,12 +106,31 @@ public class ButtonOnClickListener implements OnClickListener {
 			
 			break;
 			
+		case actv_main_ib_end:
+			
+			case_actv_main_ib_end();
+			
+			break;
+
 		default:
 			break;
 			
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void case_actv_main_ib_end() {
+		
+		// Log
+		Log.d("ButtonOnClickListener.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]",
+				"CurrentPosition=" + String.valueOf(PlayActv.vvPlayer.getCurrentPosition()));
+		
+		
+	}
 
 	private void case_actv_main_bt_export() {
 	
@@ -160,11 +179,33 @@ public class ButtonOnClickListener implements OnClickListener {
 	private void case_actv_main_ib_start() {
 		
 		// Log
-		Log.d("ButtonOnClickListener.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ ":"
-				+ Thread.currentThread().getStackTrace()[2].getMethodName()
-				+ "]", "Image button");
+		if (PlayActv.vvPlayer != null) {
+
+			long curPosition = PlayActv.vvPlayer.getCurrentPosition();
+			
+			
+			Log.d("ButtonOnClickListener.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]",
+					"CurrentPosition="
+					+ String.valueOf(
+							Methods.convert_milsec_to_digits(curPosition)
+					));
+
+		} else {//if (PlayActv.vvPlayer != null)
+
+			// Log
+			Log.d("ButtonOnClickListener.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "PlayActv.vvPlayer == null");
+			
+		}//if (PlayActv.vvPlayer != null)
+		
+		
 		
 //		case_actv_main_bt_start_B4_v_1_0();
 	

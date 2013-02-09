@@ -7,7 +7,7 @@ public class Tags {
 		// MainActv.java
 		actv_main_bt_export,
 		actv_main_bt_start, actv_main_bt_end,
-		actv_main_ib_start,
+		actv_main_ib_start, actv_main_ib_end,
 		
 	}//public static enum ButtonTags
 	
