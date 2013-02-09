@@ -210,16 +210,20 @@ public class PlayActv extends Activity
 		
 		setContentView(R.layout.activity_play_actv_vv);
 		
-		B2_v_2_0_initialize_views();
+//		B2_v_2_0_initialize_views();
+		initViews();
 		
 		// Setup media dir
-		B2_v_1_1_setup_media_dir();
+//		B2_v_1_1_setup_media_dir();
+		setupMediaDir();
 	
 		// Setup db
-		B4_v_1_0_setup_db();
+//		B4_v_1_0_setup_db();
+		setupDb();
 		
 		// Set listeners
-		B2_v_1_1_set_listeners();
+//		B2_v_1_1_set_listeners();
+		setListeners();
 	
 		// List view
 //		B4_v_1_0_setup_listview();
@@ -232,6 +236,102 @@ public class PlayActv extends Activity
 	}//private void B4_v_1_0()
 	
 	
+	private void setupMediaDir() {
+		// TODO Auto-generated method stub
+		File dpath_media = new File(CONST.DIRPATH_MEDIA);
+		
+		if (dpath_media.exists()) {
+	
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Media dir => exists");
+			
+		} else {//if (dpath_media.exists())
+			
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Media dir => Doesn't exist");
+			
+			try {
+				
+				dpath_media.mkdirs();
+				
+			} catch (Exception e) {
+				
+				// Log
+				Log.e("MainActv.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", "Exception: " + e.toString());
+			}//try
+			
+		}//if (dpath_media.exists())
+		
+	}//private void setupMediaDir()
+
+
+	private void initViews() {
+		// TODO Auto-generated method stub
+
+		tv_progress = (TextView) findViewById(R.id.actv_play_tv_progress);
+		
+		
+	}//private void initViews()
+
+
+	private void setupDb() {
+		// TODO Auto-generated method stub
+		DBUtils dbu = new DBUtils(this, CONST.dbname_main);
+		
+		//
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		dbu.createTable(wdb,
+				CONST.tname_main,
+				CONST.cols_srt_data,
+				CONST.col_types_srt_data);
+	
+	
+		wdb.close();
+		
+	}//private void setupDb()
+
+
+	private void setListeners() {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Buttons
+		 *********************************/
+//		Button bt_export = (Button) findViewById(R.id.actv_play_bt_export);
+		Button bt_start = (Button) findViewById(R.id.actv_play_bt_start);
+		Button bt_end = (Button) findViewById(R.id.actv_play_bt_end);
+	
+		/*********************************
+		 * Tags
+		 *********************************/
+//		bt_export.setTag(Tags.ButtonTags.actv_main_bt_export);
+		bt_start.setTag(Tags.ButtonTags.actv_main_bt_start);
+		bt_end.setTag(Tags.ButtonTags.actv_main_bt_end);
+		
+		/*********************************
+		 * OnTouchListener
+		 *********************************/
+//		bt_export.setOnTouchListener(new ButtonOnTouchListener(this));
+		bt_start.setOnTouchListener(new ButtonOnTouchListener(this));
+		bt_end.setOnTouchListener(new ButtonOnTouchListener(this));
+		
+		/*********************************
+		 * OnClickListener
+		 *********************************/
+//		bt_export.setOnClickListener(new ButtonOnClickListener(this));
+		bt_start.setOnClickListener(new ButtonOnClickListener(this));
+		bt_end.setOnClickListener(new ButtonOnClickListener(this));
+		
+	}//private void setListeners()
+
+
 	private void setupBookmarkList() {
 		
 		srt_list = Methods_VP2.get_srt_list_from_db(this);
