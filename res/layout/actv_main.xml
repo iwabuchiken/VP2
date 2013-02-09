@@ -43,7 +43,7 @@
             android:orientation="vertical" >
             
                 <Button
-			        android:id="@+id/actv_main_bt_option"
+			        android:id="@+id/actv_main_bt_admin"
 			        android:layout_width="150sp"
 			        android:layout_height="wrap_content"
 			        
@@ -52,7 +52,7 @@
 			        
 			        android:layout_margin="30dp"
 			        
-			        android:text="@string/actv_main_bt_option"
+			        android:text="@string/actv_main_bt_admin"
 			        android:textSize="25sp" 
 			       
 			       

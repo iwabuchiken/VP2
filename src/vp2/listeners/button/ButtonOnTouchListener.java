@@ -43,19 +43,9 @@ public class ButtonOnTouchListener implements OnTouchListener {
 				
 			
 			case actv_main_bt_export:
-
-				v.setBackgroundColor(Color.GRAY);
-				
-				break;
-
 			case actv_main_bt_start:
-
-				v.setBackgroundColor(Color.GRAY);
-				
-				break;
-
 			case actv_main_bt_end:
-
+			case actv_main_bt_admin:
 				v.setBackgroundColor(Color.GRAY);
 				
 				break;
@@ -92,18 +82,9 @@ public class ButtonOnTouchListener implements OnTouchListener {
 			switch (tag) {
 
 			case actv_main_bt_export:
-
-				v.setBackgroundColor(Color.WHITE);
-				
-				break;
-				
 			case actv_main_bt_start:
-
-				v.setBackgroundColor(Color.WHITE);
-				
-				break;
-
 			case actv_main_bt_end:
+			case actv_main_bt_admin:
 
 				v.setBackgroundColor(Color.WHITE);
 				

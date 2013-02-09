@@ -39,27 +39,29 @@ public final class R {
         public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
-        public static final int actv_main_bt_option=0x7f090007;
+        public static final int actv_main_bt_admin=0x7f090007;
         public static final int actv_main_ll_listview=0x7f090005;
         public static final int actv_main_ll_opt_button=0x7f090006;
         public static final int actv_play_ib_end=0x7f090001;
         public static final int actv_play_ib_start=0x7f090000;
         public static final int actv_play_lv=0x7f090003;
         public static final int actv_play_tv_progress=0x7f090002;
-        public static final int listrow_actv_main_tv=0x7f090008;
-        public static final int listrow_srt_item_iv=0x7f090009;
-        public static final int listrow_srt_item_tv_end=0x7f09000b;
-        public static final int listrow_srt_item_tv_start=0x7f09000a;
-        public static final int listrow_srt_item_tv_subtitle=0x7f09000c;
+        public static final int dlg_simple_list_bt_cancel=0x7f090008;
+        public static final int listrow_actv_main_tv=0x7f090009;
+        public static final int listrow_srt_item_iv=0x7f09000a;
+        public static final int listrow_srt_item_tv_end=0x7f09000c;
+        public static final int listrow_srt_item_tv_start=0x7f09000b;
+        public static final int listrow_srt_item_tv_subtitle=0x7f09000d;
         public static final int main_actv_vv=0x7f090004;
-        public static final int menu_settings=0x7f09000d;
+        public static final int menu_settings=0x7f09000e;
     }
     public static final class layout {
         public static final int activity_play_actv_vv=0x7f030000;
         public static final int actv_main=0x7f030001;
         public static final int ddrow_actv_main_menu=0x7f030002;
-        public static final int listrow_actv_main=0x7f030003;
-        public static final int listrow_srt_item=0x7f030004;
+        public static final int dlg_simple_list=0x7f030003;
+        public static final int listrow_actv_main=0x7f030004;
+        public static final int listrow_srt_item=0x7f030005;
     }
     public static final class menu {
         public static final int activity_main_actv=0x7f080000;
@@ -67,17 +69,28 @@ public final class R {
     public static final class string {
         /**  actv_main.xml 
          */
-        public static final int actv_main_bt_option=0x7f050008;
-        public static final int actv_play_bt_end=0x7f050007;
+        public static final int actv_main_bt_admin=0x7f05000f;
+        public static final int actv_play_bt_end=0x7f05000e;
         /**  activity_play_actv_vv.xml 
          */
-        public static final int actv_play_bt_start=0x7f050006;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
-        public static final int menu_get_current_position=0x7f050004;
-        public static final int menu_set_position=0x7f050005;
-        public static final int menu_settings=0x7f050002;
-        public static final int title_activity_main_actv=0x7f050003;
+        public static final int actv_play_bt_start=0x7f05000d;
+        public static final int app_name=0x7f050007;
+        public static final int dlg_admin_item_backup_db=0x7f050011;
+        public static final int dlg_admin_title=0x7f050010;
+        public static final int generic_bt_cancel=0x7f050001;
+        /**  Generic items 
+         */
+        public static final int generic_bt_ok=0x7f050000;
+        public static final int generic_tv_confirm=0x7f050002;
+        public static final int generic_tv_delete=0x7f050006;
+        public static final int generic_tv_edit=0x7f050005;
+        public static final int generic_tv_menu=0x7f050003;
+        public static final int generic_tv_register=0x7f050004;
+        public static final int hello_world=0x7f050008;
+        public static final int menu_get_current_position=0x7f05000b;
+        public static final int menu_set_position=0x7f05000c;
+        public static final int menu_settings=0x7f050009;
+        public static final int title_activity_main_actv=0x7f05000a;
     }
     public static final class style {
         /** 

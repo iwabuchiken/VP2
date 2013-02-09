@@ -62,8 +62,10 @@ import org.apache.commons.net.ftp.FTPClient;
 import vp2.items.BI;
 import vp2.items.SRTItem;
 import vp2.listeners.dialog.DialogListener;
+import vp2.listeners.dialog.DialogOnItemClickListener;
 import vp2.main.MainActv;
 import vp2.main.PlayActv;
+import vp2.main.R;
 
 // REF=> http://commons.apache.org/net/download_net.cgi
 //REF=> http://www.searchman.info/tips/2640.html
@@ -498,8 +500,59 @@ public class Methods_VP2 {
 		
 	}//public static void sortBookmark_startTime(List<BI> bookmarkList)
 
+
 	
-	
+	public static void showDlg_Admin(Activity actv) {
+		// TODO Auto-generated method stub
+		Dialog dlg = Methods_dlg.dlg_template_cancel(
+				actv, R.layout.dlg_simple_list, 
+				R.string.dlg_admin_title, 
+				R.id.dlg_simple_list_bt_cancel, 
+				Tags.DialogTags.dlg_generic_dismiss);
+		
+		String[] choices = {
+				actv.getString(R.string.dlg_admin_item_backup_db),
+		};
+		
+		List<String> list = new ArrayList<String>();
+		
+		for (String item : choices) {
+			
+			list.add(item);
+			
+		}
+		
+		/*----------------------------
+		 * 3. Adapter
+			----------------------------*/
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				actv,
+//				R.layout.dlg_db_admin,
+				android.R.layout.simple_list_item_1,
+				list
+				);
+
+		/*----------------------------
+		 * 4. Set adapter
+			----------------------------*/
+		ListView lv = (ListView) dlg.findViewById(R.id.dlg_simple_list_lv);
+		
+		lv.setAdapter(adapter);
+		
+		/*----------------------------
+		 * 5. Set listener to list
+			----------------------------*/
+		lv.setTag(Tags.DialogTags.dlg_admin);
+		
+		lv.setOnItemClickListener(new DialogOnItemClickListener(actv, dlg));
+		
+		/*----------------------------
+		 * 6. Show dialog
+			----------------------------*/
+		dlg.show();
+
+	}//public static void showDlg_Admin(Activity actv)
+
 	
 }//public class Methods
 

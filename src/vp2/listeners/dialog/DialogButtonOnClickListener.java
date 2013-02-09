@@ -1,6 +1,7 @@
 package vp2.listeners.dialog;
 
 import vp2.utils.Methods;
+import vp2.utils.Tags;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Vibrator;
@@ -75,7 +76,7 @@ public class DialogButtonOnClickListener implements OnClickListener {
 //	@Override
 	public void onClick(View v) {
 		//
-		Methods.DialogTags tag_name = (Methods.DialogTags) v.getTag();
+		Tags.DialogTags tag_name = (Tags.DialogTags) v.getTag();
 
 		// Log
 		Log.d("DialogButtonOnClickListener.java" + "["
@@ -107,31 +108,6 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			dlg3.dismiss();
 			
 			break;
-
-		case dlg_create_folder_cancel://---------------------------------------------
-			
-			dlg.dismiss();
-			
-			break;// case dlg_create_folder_cancel
-
-		case dlg_create_folder_ok://--------------------------------------------------
-			
-//			Methods.dlg_isEmpty(actv, dlg);
-			
-			break;// case dlg_create_folder_ok
-
-		case dlg_input_empty_reenter://----------------------------------------------
-			
-			dlg2.dismiss();
-			
-			break;// case dlg_input_empty_reenter
-
-		case dlg_input_empty_cancel://---------------------------------------------
-			
-			dlg2.dismiss();
-			dlg.dismiss();
-			
-			break;// case dlg_input_empty_cancel
 
 		default: // ----------------------------------------------------
 			break;

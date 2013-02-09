@@ -1,6 +1,7 @@
 package vp2.listeners.dialog;
 
 import vp2.utils.Methods;
+import vp2.utils.Tags;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -31,7 +32,7 @@ public class DialogButtonOnTouchListener implements OnTouchListener {
 //	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		// TODO 自動生成されたメソッド・スタブ
-		Methods.DialogTags tag_name = (Methods.DialogTags) v.getTag();
+		Tags.DialogTags tag_name = (Tags.DialogTags) v.getTag();
 		
 		switch (event.getActionMasked()) {
 		case MotionEvent.ACTION_DOWN:
@@ -40,28 +41,6 @@ public class DialogButtonOnTouchListener implements OnTouchListener {
 				case dlg_generic_dismiss:
 				case dlg_generic_dismiss_third_dialog:
 				case dlg_generic_dismiss_second_dialog:
-					
-				case dlg_create_folder_ok:
-				case dlg_create_folder_cancel:
-				
-				case dlg_input_empty_cancel:
-				case dlg_input_empty_reenter:
-
-				case dlg_confirm_create_folder_ok:
-				case dlg_confirm_create_folder_cancel:
-					
-				case dlg_confirm_remove_folder_cancel:
-				case dlg_confirm_remove_folder_ok:
-
-				case dlg_confirm_move_files_ok:
-
-				case dlg_search_ok:
-					
-				case dlg_register_patterns_register:
-
-				case dlg_confirm_delete_patterns_ok:
-					//
-					v.setBackgroundColor(Color.GRAY);
 					
 					break;
 				}//switch (tag_name)
@@ -75,29 +54,7 @@ public class DialogButtonOnTouchListener implements OnTouchListener {
 			case dlg_generic_dismiss_second_dialog:
 			case dlg_generic_dismiss_third_dialog:
 
-			case dlg_create_folder_ok:
-			case dlg_create_folder_cancel:
 
-			case dlg_input_empty_cancel:
-			case dlg_input_empty_reenter:
-
-			case dlg_confirm_create_folder_ok:
-			case dlg_confirm_create_folder_cancel:
-
-			case dlg_confirm_remove_folder_cancel:
-			case dlg_confirm_remove_folder_ok:
-
-			case dlg_confirm_move_files_ok:
-				
-			case dlg_search_ok:
-				
-			case dlg_register_patterns_register:
-				
-			case dlg_confirm_delete_patterns_ok:
-				
-				//
-					v.setBackgroundColor(Color.WHITE);
-					
 					break;
 				}//switch (tag_name)
 		

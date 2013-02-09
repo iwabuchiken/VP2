@@ -3,6 +3,7 @@ package vp2.listeners.dialog;
 import java.util.List;
 
 import vp2.utils.Methods;
+import vp2.utils.Tags;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -55,9 +56,16 @@ public class DialogOnItemClickListener implements OnItemClickListener {
 		 * 3. Switching
 			----------------------------*/
 		
-		Methods.DialogItemTags tag = (Methods.DialogItemTags) parent.getTag();
+		Tags.DialogTags tag = (Tags.DialogTags) parent.getTag();
 //		
-		vib.vibrate(Methods.vibLength_click);
+//		vib.vibrate(Methods.vibLength_click);
+		
+		// Log
+		Log.d("DialogOnItemClickListener.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "tag.name()=" + tag.name());
 		
 		/*----------------------------
 		 * 3. Switching

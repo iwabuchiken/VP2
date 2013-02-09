@@ -1,5 +1,14 @@
 <resources>
 
+    <!-- Generic items -->
+	    <string name="generic_bt_ok">OK</string>
+	    <string name="generic_bt_cancel">キャンセル</string>
+	    <string name="generic_tv_confirm">確認</string>
+	    <string name="generic_tv_menu">メニュー</string>
+	    <string name="generic_tv_register">登録</string>
+	    <string name="generic_tv_edit">編集</string>
+	    <string name="generic_tv_delete">削除</string>
+    
     <string name="app_name">VP2</string>
     <string name="hello_world">Hello world!</string>
     
@@ -23,5 +32,8 @@
     	<string name="actv_play_bt_end">End point</string>
     
     <!-- actv_main.xml -->
-    	<string name="actv_main_bt_option">Options</string>
+    	<string name="actv_main_bt_admin">Admin</string>
+    	
+    	<string name="dlg_admin_title">Admin</string>
+    	<string name="dlg_admin_item_backup_db">Backup DB</string>
 </resources>

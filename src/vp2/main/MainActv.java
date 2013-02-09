@@ -108,7 +108,22 @@ public class MainActv extends ListActivity {
 		
 		setFilesList2ListView();
 		
+		setListeners();
+		
 	}//private void B8_v_1_1b()
+
+
+
+	private void setListeners() {
+		// TODO Auto-generated method stub
+		Button btAdmin = (Button) findViewById(R.id.actv_main_bt_admin);
+		
+		btAdmin.setTag(Tags.ButtonTags.actv_main_bt_admin);
+		
+		btAdmin.setOnTouchListener(new ButtonOnTouchListener(this));
+		btAdmin.setOnClickListener(new ButtonOnClickListener(this));
+		
+	}//private void setListeners()
 
 
 

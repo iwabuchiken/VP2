@@ -111,6 +111,12 @@ public class ButtonOnClickListener implements OnClickListener {
 			case_actv_main_ib_end();
 			
 			break;
+			
+		case actv_main_bt_admin:
+			
+			case_actv_main_bt_admin();
+			
+			break;
 
 		default:
 			break;
@@ -118,6 +124,11 @@ public class ButtonOnClickListener implements OnClickListener {
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void case_actv_main_bt_admin() {
+		// TODO Auto-generated method stub
+		Methods_VP2.showDlg_Admin(actv);
+	}
 
 	private void case_actv_main_ib_end() {
 		
