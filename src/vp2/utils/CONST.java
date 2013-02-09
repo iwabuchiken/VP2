@@ -4,10 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import vp2.adapters.BIAdapter;
+import vp2.adapters.SRTListAdapter;
 import vp2.items.BI;
 import vp2.items.SRTItem;
 
 import android.os.Environment;
+import android.widget.ListView;
 
 public class CONST {
 
@@ -98,5 +101,12 @@ public class CONST {
 	 * List-related
 	 *********************************/
 	public static List<BI> bookmarkList = null;
+
+	public static BIAdapter biAdapter = null;
+	
+	/*********************************
+	 * Views
+	 *********************************/
+	public static ListView lv_bookMarks;
 	
 }//public class CONST

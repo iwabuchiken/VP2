@@ -8,7 +8,9 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 
+import vp2.adapters.BIAdapter;
 import vp2.adapters.SRTListAdapter;
+import vp2.items.BI;
 import vp2.items.SRTItem;
 import vp2.listeners.button.ButtonOnClickListener;
 import vp2.listeners.button.ButtonOnTouchListener;
@@ -334,8 +336,8 @@ public class PlayActv extends Activity
 
 	private void setupBookmarkList() {
 		
-		srt_list = Methods_VP2.get_srt_list_from_db(this);
-		
+//		srt_list = Methods_VP2.get_srt_list_from_db(this);
+//		
 		Intent i = this.getIntent();
 		
 		String itemName =
@@ -363,89 +365,106 @@ public class PlayActv extends Activity
 		
 		CONST.bookmarkList = Methods_VP2.getBookmarkList(this, tableName);
 		
-		// Log
-		Log.d("PlayActv.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ ":"
-				+ Thread.currentThread().getStackTrace()[2].getMethodName()
-				+ "]", "CONST.bookmarkList=" + CONST.bookmarkList);
+//		// Log
+//		Log.d("PlayActv.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ ":"
+//				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//				+ "]", "CONST.bookmarkList=" + CONST.bookmarkList);
 		
 //		CONST.bookmarkList = Methods_VP2.getBookmarkList(this, );
 		
 //		Methods_VP2.sort_list_start_time(srt_list);
 		
 		// Log
-		if (srt_list != null) {
+		if (CONST.bookmarkList != null) {
 	
 			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "srt_list.size()=" + srt_list.size());
+					+ "]", "CONST.bookmarkList.size()=" + CONST.bookmarkList.size());
 			
-			Methods_VP2.sort_list_start_time(srt_list);
+//			Methods_VP2.sort_list_start_time(srt_list);
+			Methods_VP2.sortBookmark_startTime(CONST.bookmarkList);
 	
-		} else {//if (srt_list != null)
+		} else {//if (CONST.bookmarkList != null)
 	
 			// Log
 			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "srt_list == null");
+					+ "]", "CONST.bookmarkList == null");
 			
-		}//if (srt_list != null)
+		}//if (CONST.bookmarkList != null)
 		
 		//
-		aAdapter = new SRTListAdapter(
+//		aAdapter = new SRTListAdapter(
+//				this,
+//				R.layout.activity_play_actv_vv,
+//				CONST.bookmarkList
+//		);
+		CONST.biAdapter = new BIAdapter(
 				this,
 				R.layout.activity_play_actv_vv,
-				srt_list
-		);
+				CONST.bookmarkList
+				);
 		
-		if (aAdapter == null) {
+		if (CONST.biAdapter == null) {
 			
 			// Log
 			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "aAdapter == null");
+					+ "]", "CONST.biAdapter == null");
 			
-		} else {//if (aAdapter == null)
+		} else {//if (CONST.biAdapter == null)
 
 			// Log
 			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "aAdapter != null");
+					+ "]", "CONST.biAdapter != null");
 
-		}//if (aAdapter == null)
+		}//if (CONST.biAdapter == null)
 		
 		//
-		lv_srt_items = (ListView) findViewById(R.id.actv_play_lv);
+		CONST.lv_bookMarks = (ListView) findViewById(R.id.actv_play_lv);
 
-		if (lv_srt_items == null) {
+		if (CONST.lv_bookMarks == null) {
 			
 			// Log
 			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "lv_srt_items == null");
+					+ "]", "CONST.lv_bookMarks == null");
 			
-		} else {//if (lv_srt_items == null)
+		} else {//if (CONST.lv_bookMarks == null)
 
 			// Log
 			Log.d("PlayActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "lv_srt_items != null");
+					+ "]", "CONST.lv_bookMarks != null");
 
-		}//if (lv_srt_items == null)
+		}//if (CONST.lv_bookMarks == null)
 
-		if (aAdapter != null) {
+		if (CONST.biAdapter != null && CONST.lv_bookMarks != null) {
 			
-			lv_srt_items.setAdapter(aAdapter);
+			CONST.lv_bookMarks.setAdapter(CONST.biAdapter);
 			
-		}//if (aAdapter == condition)
+		} else {//if (CONST.biAdapter == condition)
+		
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "Either CONST.lv_bookMarks is null or " +
+							"CONST.biAdapter is null");
+			
+		}//if (CONST.biAdapter == condition)
+		
 //		lv_srt_items.setAdapter(aAdapter);
 		
 		// Tag
-		lv_srt_items.setTag(Tags.ListTags.actv_main_lv);
+		CONST.lv_bookMarks.setTag(Tags.ListTags.actv_main_lv);
 		
 		// Listener
-		lv_srt_items.setOnItemClickListener(new ListOnItemClickListener(this));
+		CONST.lv_bookMarks.setOnItemClickListener(new ListOnItemClickListener(this));
 		
 	}//private void setupListView()
 

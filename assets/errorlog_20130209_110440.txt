@@ -1,0 +1,72 @@
+02-09 11:03:14.350: I/Process(2705): Sending signal. PID: 2705 SIG: 9
+02-09 11:03:17.100: D/MainActv.java[83](2736): onCreate()
+02-09 11:03:17.140: D/MainActv.java[355](2736): Media dir => exists
+02-09 11:03:17.140: D/MainActv.java[540:getFilesList](2736): listFiles.length=4
+02-09 11:03:17.140: D/MainActv.java[550:getFilesList](2736): name=ConnachtmansRambleJig.mp4
+02-09 11:03:17.140: D/MainActv.java[550:getFilesList](2736): name=evan.mp4
+02-09 11:03:17.140: D/MainActv.java[550:getFilesList](2736): name=Gallaghers Frolics.mp4
+02-09 11:03:17.150: D/MainActv.java[550:getFilesList](2736): name=JohnHockenberry.mp4
+02-09 11:03:17.160: D/MainListAdapter.java[79:getView](2736): name=ConnachtmansRambleJig.mp4
+02-09 11:03:17.160: D/MainListAdapter.java[79:getView](2736): name=evan.mp4
+02-09 11:03:17.170: D/MainListAdapter.java[79:getView](2736): name=Gallaghers Frolics.mp4
+02-09 11:03:17.170: D/MainListAdapter.java[79:getView](2736): name=JohnHockenberry.mp4
+02-09 11:03:17.200: D/libEGL(2736): loaded /system/lib/egl/libEGL_tegra.so
+02-09 11:03:17.220: D/libEGL(2736): loaded /system/lib/egl/libGLESv1_CM_tegra.so
+02-09 11:03:17.220: D/libEGL(2736): loaded /system/lib/egl/libGLESv2_tegra.so
+02-09 11:03:17.290: D/OpenGLRenderer(2736): Enabling debug mode 0
+02-09 11:03:17.290: D/MainListAdapter.java[79:getView](2736): name=ConnachtmansRambleJig.mp4
+02-09 11:03:17.300: D/MainListAdapter.java[79:getView](2736): name=evan.mp4
+02-09 11:03:17.300: D/MainListAdapter.java[79:getView](2736): name=Gallaghers Frolics.mp4
+02-09 11:03:17.300: D/MainListAdapter.java[79:getView](2736): name=JohnHockenberry.mp4
+02-09 11:03:17.330: D/MainListAdapter.java[79:getView](2736): name=ConnachtmansRambleJig.mp4
+02-09 11:03:17.340: D/MainListAdapter.java[79:getView](2736): name=evan.mp4
+02-09 11:03:17.340: D/MainListAdapter.java[79:getView](2736): name=Gallaghers Frolics.mp4
+02-09 11:03:17.350: D/dalvikvm(2736): GC_CONCURRENT freed 382K, 7% free 6642K/7111K, paused 2ms+1ms
+02-09 11:03:17.350: D/MainListAdapter.java[79:getView](2736): name=JohnHockenberry.mp4
+02-09 11:03:18.420: D/dalvikvm(2736): GC_FOR_ALLOC freed 40K, 7% free 6633K/7111K, paused 14ms
+02-09 11:03:18.420: I/dalvikvm-heap(2736): Grow heap (frag case) to 6.812MB for 262156-byte allocation
+02-09 11:03:18.440: D/dalvikvm(2736): GC_FOR_ALLOC freed 0K, 8% free 6890K/7431K, paused 16ms
+02-09 11:03:18.440: D/MainActv.java[606:onListItemClick](2736): File=/mnt/sdcard/vp2/media/Gallaghers Frolics.mp4
+02-09 11:03:18.470: D/MainActv.java[495](2736): onPause()
+02-09 11:03:18.480: D/PlayActv.java[101](2736): onCreate()
+02-09 11:03:18.480: D/PlayActv.java[106:onCreate](2736): message
+02-09 11:03:18.480: D/PlayActv.java[204](2736): sdk=15
+02-09 11:03:18.500: D/PlayActv.java[249](2736): Media dir => exists
+02-09 11:03:18.510: D/DBUtils.java[111](2736): Table exists => srt_data
+02-09 11:03:18.510: D/PlayActv.java[348:setupBookmarkList](2736): itemName=Gallaghers Frolics.mp4
+02-09 11:03:18.510: D/Methods_VP2.java[334:convertItemName2TableName](2736): tokens.length=2
+02-09 11:03:18.510: D/PlayActv.java[360:setupBookmarkList](2736): tableName=Gallaghers_Frolics
+02-09 11:03:18.510: D/Methods_VP2.java[371:getBookmarkList](2736): tableName=Gallaghers_Frolics
+02-09 11:03:18.520: D/Methods_VP2.java[382:getBookmarkList](2736): getAllData() => Table doesn't exist: Gallaghers_Frolics
+02-09 11:03:18.520: D/PlayActv.java[393](2736): CONST.bookmarkList == null
+02-09 11:03:18.520: D/PlayActv.java[421](2736): CONST.biAdapter != null
+02-09 11:03:18.520: D/PlayActv.java[440](2736): CONST.lv_bookMarks != null
+02-09 11:03:18.520: D/AndroidRuntime(2736): Shutting down VM
+02-09 11:03:18.520: W/dalvikvm(2736): threadid=1: thread exiting with uncaught exception (group=0x40a361f8)
+02-09 11:03:18.520: E/AndroidRuntime(2736): FATAL EXCEPTION: main
+02-09 11:03:18.520: E/AndroidRuntime(2736): java.lang.RuntimeException: Unable to start activity ComponentInfo{vp2.main/vp2.main.PlayActv}: java.lang.NullPointerException
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1956)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1981)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.ActivityThread.access$600(ActivityThread.java:123)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1147)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.os.Looper.loop(Looper.java:137)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.ActivityThread.main(ActivityThread.java:4424)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at java.lang.reflect.Method.invokeNative(Native Method)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at java.lang.reflect.Method.invoke(Method.java:511)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at dalvik.system.NativeStart.main(Native Method)
+02-09 11:03:18.520: E/AndroidRuntime(2736): Caused by: java.lang.NullPointerException
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.widget.ArrayAdapter.getCount(ArrayAdapter.java:330)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.widget.ListView.setAdapter(ListView.java:460)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at vp2.main.PlayActv.setupBookmarkList(PlayActv.java:447)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at vp2.main.PlayActv.B4_v_1_0(PlayActv.java:232)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at vp2.main.PlayActv.B5_v_1_0(PlayActv.java:207)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at vp2.main.PlayActv.B5_v_2_1(PlayActv.java:132)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at vp2.main.PlayActv.B6_v_1_0(PlayActv.java:125)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at vp2.main.PlayActv.onCreate(PlayActv.java:111)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.Activity.performCreate(Activity.java:4465)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1049)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1920)
+02-09 11:03:18.520: E/AndroidRuntime(2736): 	... 11 more

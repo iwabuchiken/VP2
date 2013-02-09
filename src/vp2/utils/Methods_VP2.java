@@ -467,6 +467,29 @@ public class Methods_VP2 {
 		
 	}//public static List<BI> getBookmarkList(Activity actv, String tableName)
 
+
+	public static void sortBookmark_startTime(List<BI> bookmarkList) {
+		// TODO Auto-generated method stub
+		
+		Collections.sort(bookmarkList, new Comparator<BI>(){
+
+//			@Override
+			public int compare(BI i1, BI i2) {
+				/*********************************
+				 * memo
+				 *********************************/
+				long t1 = i1.getStartTime();
+				long t2 = i2.getStartTime();
+				
+				return (int)(t1 - t2);
+					
+
+			}//public int compare(TI lti, TI rti)
+			
+		});//Collections.sort()
+		
+	}//public static void sortBookmark_startTime(List<BI> bookmarkList)
+
 	
 	
 	
