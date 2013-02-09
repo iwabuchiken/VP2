@@ -442,7 +442,8 @@ public class PlayActv extends Activity
 
 		}//if (CONST.lv_bookMarks == null)
 
-		if (CONST.biAdapter != null && CONST.lv_bookMarks != null) {
+		if (CONST.biAdapter != null && CONST.lv_bookMarks != null
+					&& CONST.bookmarkList != null) {
 			
 			CONST.lv_bookMarks.setAdapter(CONST.biAdapter);
 			
@@ -453,8 +454,10 @@ public class PlayActv extends Activity
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ ":"
 					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", "Either CONST.lv_bookMarks is null or " +
-							"CONST.biAdapter is null");
+					+ "]",
+					"Either CONST.lv_bookMarks is null or " +
+						"CONST.biAdapter is null or " +
+						"CONST.bookmarkList is null");
 			
 		}//if (CONST.biAdapter == condition)
 		
@@ -465,6 +468,123 @@ public class PlayActv extends Activity
 		
 		// Listener
 		CONST.lv_bookMarks.setOnItemClickListener(new ListOnItemClickListener(this));
+		
+	}//private void setupListView()
+
+	private void setupBookmarkList_debug_v_1_1a_e1d1() {
+		
+		srt_list = Methods_VP2.get_srt_list_from_db(this);
+		
+		Intent i = this.getIntent();
+		
+		String itemName =
+				i.getStringExtra(CONST.intent.mainActv_fileName.name());
+
+		// Log
+		Log.d("PlayActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "itemName=" + itemName);
+		
+		/*********************************
+		 * Convert clip name into table name
+		 *********************************/
+		String tableName = Methods_VP2.convertItemName2TableName(this, itemName);
+		
+		// Log
+		Log.d("PlayActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "tableName=" + tableName);
+		
+		
+		CONST.bookmarkList = Methods_VP2.getBookmarkList(this, tableName);
+		
+		// Log
+		Log.d("PlayActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "CONST.bookmarkList=" + CONST.bookmarkList);
+		
+//		CONST.bookmarkList = Methods_VP2.getBookmarkList(this, );
+		
+//		Methods_VP2.sort_list_start_time(srt_list);
+		
+		// Log
+		if (srt_list != null) {
+	
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "srt_list.size()=" + srt_list.size());
+			
+			Methods_VP2.sort_list_start_time(srt_list);
+	
+		} else {//if (srt_list != null)
+	
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "srt_list == null");
+			
+		}//if (srt_list != null)
+		
+		//
+		aAdapter = new SRTListAdapter(
+				this,
+				R.layout.activity_play_actv_vv,
+				srt_list
+		);
+		
+		if (aAdapter == null) {
+			
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "aAdapter == null");
+			
+		} else {//if (aAdapter == null)
+
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "aAdapter != null");
+
+		}//if (aAdapter == null)
+		
+		//
+		lv_srt_items = (ListView) findViewById(R.id.actv_play_lv);
+
+		if (lv_srt_items == null) {
+			
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "lv_srt_items == null");
+			
+		} else {//if (lv_srt_items == null)
+
+			// Log
+			Log.d("PlayActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "lv_srt_items != null");
+
+		}//if (lv_srt_items == null)
+
+		if (aAdapter != null) {
+			
+			lv_srt_items.setAdapter(aAdapter);
+			
+		}//if (aAdapter == condition)
+//		lv_srt_items.setAdapter(aAdapter);
+		
+		// Tag
+		lv_srt_items.setTag(Tags.ListTags.actv_main_lv);
+		
+		// Listener
+		lv_srt_items.setOnItemClickListener(new ListOnItemClickListener(this));
 		
 	}//private void setupListView()
 
