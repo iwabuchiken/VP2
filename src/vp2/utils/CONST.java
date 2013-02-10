@@ -27,8 +27,27 @@ public class CONST {
 				Environment.getExternalStorageDirectory().getPath()
 				+ File.separator + DIRPATH_ROOT
 				+ File.separator + DIRPATH_media_ROOT;
-			
+	
+	public static final String DIRPATH_backupRoot = "bk";
+
+	public static final String DIRPATH_BK = 
+			Environment.getExternalStorageDirectory().getPath()
+			+ File.separator + DIRPATH_ROOT
+			+ File.separator + DIRPATH_backupRoot;
+
 	public static List<Long> srt_data = new ArrayList<Long>();
+	
+	public static String dirPath_db = "/data/data/vp2.main/databases";
+	
+	public static String dbBackupTrunk = "vp2_backup";
+	
+//	public static String fileName_db_backup_ext = ".bk";
+	public static String dbBackupExt = ".bk";
+	
+	public static String dirPath_db_backup = 
+			Environment.getExternalStorageDirectory().getPath()
+			+ "/VP2_backup";
+	
 	
 	/*********************************
 	 * DB: Columns

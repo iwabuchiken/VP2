@@ -46,14 +46,15 @@ public final class R {
         public static final int actv_play_ib_start=0x7f090000;
         public static final int actv_play_lv=0x7f090003;
         public static final int actv_play_tv_progress=0x7f090002;
-        public static final int dlg_simple_list_bt_cancel=0x7f090008;
-        public static final int listrow_actv_main_tv=0x7f090009;
-        public static final int listrow_srt_item_iv=0x7f09000a;
-        public static final int listrow_srt_item_tv_end=0x7f09000c;
-        public static final int listrow_srt_item_tv_start=0x7f09000b;
-        public static final int listrow_srt_item_tv_subtitle=0x7f09000d;
+        public static final int dlg_simple_list_bt_cancel=0x7f090009;
+        public static final int dlg_simple_list_lv=0x7f090008;
+        public static final int listrow_actv_main_tv=0x7f09000a;
+        public static final int listrow_srt_item_iv=0x7f09000b;
+        public static final int listrow_srt_item_tv_end=0x7f09000d;
+        public static final int listrow_srt_item_tv_start=0x7f09000c;
+        public static final int listrow_srt_item_tv_subtitle=0x7f09000e;
         public static final int main_actv_vv=0x7f090004;
-        public static final int menu_settings=0x7f09000e;
+        public static final int menu_settings=0x7f09000f;
     }
     public static final class layout {
         public static final int activity_play_actv_vv=0x7f030000;

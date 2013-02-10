@@ -2,6 +2,8 @@ package vp2.listeners.dialog;
 
 import java.util.List;
 
+import vp2.main.R;
+import vp2.utils.CONST;
 import vp2.utils.Methods;
 import vp2.utils.Tags;
 
@@ -72,11 +74,31 @@ public class DialogOnItemClickListener implements OnItemClickListener {
 			----------------------------*/
 		switch (tag) {
 		
+		case dlg_admin:
+			
+			String itemName = (String) parent.getItemAtPosition(position);
+			
+			caseDlgAdmin(itemName);
+			
+			break;
 			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+
+	private void caseDlgAdmin(String itemName) {
+		// TODO Auto-generated method stub
+		if (itemName.equals(actv.getString(
+								R.string.dlg_admin_item_backup_db))) {
+			
+			Methods.backupDb(actv, CONST.dbname_main, CONST.DIRPATH_BK, dlg);
+			
+		} else {//if (itemName.equals(actv.getString(R.string.d)))
+			
+		}//if (itemName.equals(actv.getString(R.string.d)))
+		
+	}//private void caseDlgAdmin(String itemName)
 	
-}
+}//public class DialogOnItemClickListener implements OnItemClickListener

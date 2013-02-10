@@ -1,5 +1,5 @@
 a
-cd C:\WORKS\WS\WS_Android\VP2
+pushd C:\WORKS\WS\WS_Android\VP2
 gitk
 
 C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WS\WS_Android~\FM\VP2\VP2.mm
