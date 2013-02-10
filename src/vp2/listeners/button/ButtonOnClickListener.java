@@ -49,6 +49,8 @@ public class ButtonOnClickListener implements OnClickListener {
 	
 	//
 	ListView lv;
+
+	String tableName;	// Table name for the current audio file
 	
 	public ButtonOnClickListener(Activity actv) {
 		//
@@ -78,12 +80,26 @@ public class ButtonOnClickListener implements OnClickListener {
 		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
 	}
 
-//	@Override
+	public ButtonOnClickListener(Activity actv, String tableName) {
+		// TODO Auto-generated constructor stub
+		this.actv = actv;
+		
+		this.tableName = tableName;
+		
+		// Log
+		Log.d("ButtonOnClickListener.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "tableName=" + tableName);
+	}
+
+	//	@Override
 	public void onClick(View v) {
 //		//
 		Tags.ButtonTags tag = (Tags.ButtonTags) v.getTag();
 //
-		vib.vibrate(Methods.vibLength_click);
+//		vib.vibrate(Methods.vibLength_click);
 		
 		//
 		switch (tag) {
@@ -205,6 +221,16 @@ public class ButtonOnClickListener implements OnClickListener {
 							Methods.convert_milsec_to_digits(curPosition)
 					));
 
+			// Log
+			Log.d("ButtonOnClickListener.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "tableName=" + tableName);
+			
+			boolean res = 
+					Methods_VP2.saveBookmark(actv, tableName, curPosition);
+			
 		} else {//if (PlayActv.vvPlayer != null)
 
 			// Log

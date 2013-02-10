@@ -419,5 +419,117 @@ public class DBUtils extends SQLiteOpenHelper{
 		
 	}//public static void insert_data_start_position
 
+	public static long insertData_StartPosition(SQLiteDatabase wdb,
+			String tnameMain, String colName, String value) {
+		
+		try {
+			// Start transaction
+			wdb.beginTransaction();
+			
+			// ContentValues
+			ContentValues val = new ContentValues();
+			
+			// Put values
+			val.put(colName, value);
+			
+			val.put(
+					CONST.cols_basic[
+	                     Methods.getArrayIndex(
+	                    		 CONST.cols_basic,
+	                    		 "created_at")],
+					Methods.getMillSeconds_now());
+			
+			val.put(
+					CONST.cols_basic[
+	                     Methods.getArrayIndex(
+	                    		 CONST.cols_basic,
+	                    		 "modified_at")],
+					Methods.getMillSeconds_now());
+
+//			val.put(CONST.cols_srt_data_full[2], Methods.getMillSeconds_now());
+			
+//			for (int i = 0; i < columnNames.length; i++) {
+//				val.put(columnNames[i], values[i]);
+//			}//for (int i = 0; i < columnNames.length; i++)
+			
+			// Insert data
+//			wdb.insert(tnameMain, null, val);
+			long res = wdb.insert(tnameMain, null, val);
+			
+			if (res != -1) {
+
+				// Set as successful
+				wdb.setTransactionSuccessful();
+				
+				// End transaction
+				wdb.endTransaction();
+				
+				// Log
+				Log.d("DBUtils.java" + "["
+						+ Thread.currentThread()
+							.getStackTrace()[2].getLineNumber()
+						+ ":"
+						+ Thread.currentThread()
+							.getStackTrace()[2].getMethodName()
+						+ "]",
+						"Data inserted => " + "("
+								+ colName + " => " + value + "), and others");
+
+				
+				
+			} else {//if (res != -1)
+
+//				// Set as successful
+//				wdb.setTransactionSuccessful();
+				
+				// End transaction
+				wdb.endTransaction();
+				
+				// Log
+				Log.d("DBUtils.java" + "["
+						+ Thread.currentThread()
+							.getStackTrace()[2].getLineNumber()
+						+ ":"
+						+ Thread.currentThread()
+							.getStackTrace()[2].getMethodName()
+						+ "]",
+						"Data insertion => Failed");
+
+			}//if (res != -1)
+			
+			return res;
+			
+//			// Set as successful
+//			wdb.setTransactionSuccessful();
+//			
+//			// End transaction
+//			wdb.endTransaction();
+//			
+//			// Log
+//			Log.d("DBUtils.java" + "["
+//					+ Thread.currentThread()
+//						.getStackTrace()[2].getLineNumber()
+//					+ ":"
+//					+ Thread.currentThread()
+//						.getStackTrace()[2].getMethodName()
+//					+ "]",
+//					"Data inserted => " + "("
+//							+ colName + " => " + value + "), and others");
+			
+		} catch (Exception e) {
+
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "Exception! => " + e.toString());
+			
+			return CONST.EXCEPTION_DbInsertion;
+			
+		}//try
+		
+	}//public static void insertData_StartPosition()
+
 }//public class DBUtils
 

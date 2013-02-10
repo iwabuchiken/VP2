@@ -85,6 +85,11 @@ public class PlayActv extends Activity
 	String[] opt_menu_labels;
 	
 	/*********************************
+	 * DB-related
+	 *********************************/
+	String tableName;	// Table name for the current audio file
+	
+	/*********************************
 	 * Views
 	 *********************************/
 	static TextView tv_progress = null;
@@ -92,6 +97,11 @@ public class PlayActv extends Activity
 	Task_Progress task_prog = null;
 	
 	public static ListView lv_srt_items;
+	
+	
+	/*********************************
+	 * Methods
+	 *********************************/
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -183,29 +193,36 @@ public class PlayActv extends Activity
 		/*********************************
 		 * OnClickListener
 		 *********************************/
-
-		ib_start.setOnClickListener(new ButtonOnClickListener(this));
-		bt_end.setOnClickListener(new ButtonOnClickListener(this));
-		
-	}//private void setListeners()
-
-	private void setupBookmarkList() {
-		Intent i = this.getIntent();
-		
-		String itemName =
-				i.getStringExtra(CONST.intent.mainActv_fileName.name());
-
 		// Log
 		Log.d("PlayActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ ":"
 				+ Thread.currentThread().getStackTrace()[2].getMethodName()
-				+ "]", "itemName=" + itemName);
+				+ "]", "tableName=" + tableName);
 		
-		/*********************************
-		 * Convert clip name into table name
-		 *********************************/
-		String tableName = Methods_VP2.convertItemName2TableName(this, itemName);
+		ib_start.setOnClickListener(new ButtonOnClickListener(this, tableName));
+		bt_end.setOnClickListener(new ButtonOnClickListener(this));
+		
+	}//private void setListeners()
+
+	private void setupBookmarkList() {
+//		Intent i = this.getIntent();
+//		
+//		String itemName =
+//				i.getStringExtra(CONST.intent.mainActv_fileName.name());
+//
+//		// Log
+//		Log.d("PlayActv.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ ":"
+//				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//				+ "]", "itemName=" + itemName);
+//		
+//		/*********************************
+//		 * Convert clip name into table name
+//		 *********************************/
+////		String tableName = Methods_VP2.convertItemName2TableName(this, itemName);
+//		tableName = Methods_VP2.convertItemName2TableName(this, itemName);
 		
 		// Log
 		Log.d("PlayActv.java" + "["
@@ -673,6 +690,8 @@ public class PlayActv extends Activity
 
 		getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
 		
+		setupIntent();
+		
 		// Option menu labels
 		opt_menu_labels =
 				this.getResources().getStringArray(R.array.option_menu_labels_actv_main);
@@ -686,16 +705,44 @@ public class PlayActv extends Activity
 	
 		// Setup db
 		setupDb();
-		
+
+		// List view
+		setupBookmarkList();
+
 		// Set listeners
 		setListeners();
 	
-		// List view
-		setupBookmarkList();
+//		// Set listeners
+//		setListeners();
+//	
+//		// List view
+//		setupBookmarkList();
 		
 		// Start media
 		startMedia();
 		
+	}
+
+	private void setupIntent() {
+		// TODO Auto-generated method stub
+		Intent i = this.getIntent();
+		
+		String itemName =
+				i.getStringExtra(CONST.intent.mainActv_fileName.name());
+
+		// Log
+		Log.d("PlayActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "itemName=" + itemName);
+		
+		/*********************************
+		 * Convert clip name into table name
+		 *********************************/
+//		String tableName = Methods_VP2.convertItemName2TableName(this, itemName);
+		tableName = Methods_VP2.convertItemName2TableName(this, itemName);
+
 	}//protected void onStart()
 	
 }//public class PlayActv extends Activity

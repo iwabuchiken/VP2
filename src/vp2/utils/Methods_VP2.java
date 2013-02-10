@@ -59,6 +59,7 @@ import android.os.Looper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
 
+import vp2.adapters.SRTListAdapter;
 import vp2.items.BI;
 import vp2.items.SRTItem;
 import vp2.listeners.dialog.DialogListener;
@@ -552,6 +553,173 @@ public class Methods_VP2 {
 		dlg.show();
 
 	}//public static void showDlg_Admin(Activity actv)
+
+
+	
+	public static boolean saveBookmark(Activity actv,
+						String tableName, long curPosition) {
+		
+		// Log
+		Log.d("Methods_VP2.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "tableName=" + tableName);
+		
+		
+		if (PlayActv.vvPlayer != null) {
+			
+			DBUtils dbu = new DBUtils(actv, CONST.dbname_main);
+			
+			//
+			SQLiteDatabase wdb = dbu.getWritableDatabase();
+
+			// Log
+			Log.d("Methods_VP2.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "Calling => DBUtils.insertData_StartPosition()");
+			
+			long res = DBUtils.insertData_StartPosition(
+					wdb,
+//					CONST.tname_main,
+					tableName,
+					CONST.cols_bookmarkData[Methods.getArrayIndex(
+									CONST.cols_bookmarkData,
+									"startTime")],
+					String.valueOf(curPosition));
+			
+			if (res >= 0) {
+
+				// Log
+				Log.d("ButtonOnClickListener.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]",
+						"Stored: Current position=" + curPosition
+						+ "/"
+						+ "DB id=" + res);
+
+			} else {//if (res >= 0)
+
+				// Log
+				Log.d("Methods_VP2.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber()
+						+ ":"
+						+ Thread.currentThread().getStackTrace()[2]
+								.getMethodName() + "]",
+						"DB insertin failed: Position=" + curPosition);
+				
+			}//if (res >= 0)
+			
+//			// Log
+//			Log.d("ButtonOnClickListener.java"
+//					+ "["
+//					+ Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + "]",
+//					"Stored => " + PlayActv.vvPlayer.getCurrentPosition());
+			
+			wdb.close();
+			
+			/*********************************
+			 * Refresh the list view
+			 *********************************/
+//			// Log
+//			Log.d("ButtonOnClickListener.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "Refreshing the list view ...");
+//			
+//			if (PlayActv.srt_list != null) {
+//				
+//				PlayActv.srt_list.clear();
+//				
+//			}//if (PlayActv.srt_list == condition)
+////			PlayActv.srt_list.clear();
+//			
+//			// Log
+//			Log.d("ButtonOnClickListener.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "srt_list => Cleared");
+//			
+////			PlayActv.srt_list = Methods_vp2.get_srt_list_from_db(actv);
+//			
+//			if (PlayActv.srt_list != null) {
+//
+//				PlayActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+//				
+//				// Log
+//				Log.d("ButtonOnClickListener.java" + "["
+//						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//						+ "]", "PlayActv.srt_list.size()=" + PlayActv.srt_list.size());
+//				
+//				Methods_VP2.sort_list_start_time(PlayActv.srt_list);
+//				
+//				// Log
+//				Log.d("ButtonOnClickListener.java" + "["
+//						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//						+ "]", "List => Sorted");
+//				
+//				PlayActv.aAdapter.notifyDataSetChanged();
+//
+//			} else {//if (condition)
+//
+//				PlayActv.srt_list = Methods_VP2.get_srt_list_from_db(actv);
+//				
+//				Methods_VP2.sort_list_start_time(PlayActv.srt_list);
+//				
+//				PlayActv.aAdapter = new SRTListAdapter(
+//						actv,
+////						R.layout.activity_main_actv_vv,
+//						R.layout.activity_play_actv_vv,
+//						PlayActv.srt_list
+//				);
+//
+//				PlayActv.lv_srt_items.setAdapter(PlayActv.aAdapter);
+//				
+//			}//if (condition)
+			
+//			PlayActv.srt_list.addAll(Methods_VP2.get_srt_list_from_db(actv));
+//			
+//			// Log
+//			Log.d("ButtonOnClickListener.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "PlayActv.srt_list.size()=" + PlayActv.srt_list.size());
+//			
+//			Methods_VP2.sort_list_start_time(PlayActv.srt_list);
+//			
+//			// Log
+//			Log.d("ButtonOnClickListener.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "List => Sorted");
+//			
+//			PlayActv.aAdapter.notifyDataSetChanged();
+//			
+			
+		} else {//if (PlayActv.vvPlayer != null)
+			
+			// Log
+			Log.d("Methods_VP2.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "PlayActv.vvPlayer == null");
+			
+//			CONST.srt_data.add((long) -1);
+//			
+//			// Log
+//			Log.d("ButtonOnClickListener.java"
+//					+ "["
+//					+ Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + "]",
+//					"Stored => " + -1);
+			
+		}//if (PlayActv.vvPlayer != null)
+
+		return false;
+	}//public static boolean saveBookmark()
 
 	
 }//public class Methods

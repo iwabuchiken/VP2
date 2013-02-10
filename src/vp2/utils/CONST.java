@@ -80,7 +80,8 @@ public class CONST {
 			"INTEGER",	"INTEGER",
 			"INTEGER",	"INTEGER",	"TEXT"
 		};
-	public static String[] cols_bookmarkData = 
+	
+	public static final String[] cols_bookmarkData = 
 		{
 			// Column number
 			// 3			4			5
@@ -88,11 +89,25 @@ public class CONST {
 		};
 //	"date_modified", "memos", "tags"};
 
-	public static String[] colTypes_bookmarkData =
+	public static final String[] colTypes_bookmarkData =
 		{
 			"INTEGER",		"INTEGER",	"TEXT",	"TEXT"
 		};
 
+	public static final String[] cols_basic = {
+		
+		android.provider.BaseColumns._ID,		// 0
+		"created_at", "modified_at",			// 1,2
+		
+	};
+	
+	public static String[] colTypes_basic = {
+		
+		"INTEGER",
+		"INTEGER",	"INTEGER",
+		
+	};
+	
 	/*********************************
 	 * DB: DB & Table names
 	 *********************************/
@@ -127,5 +142,9 @@ public class CONST {
 	 * Views
 	 *********************************/
 	public static ListView lv_bookMarks;
-	
+
+	/*********************************
+	 * Constant values
+	 *********************************/
+	public static final long EXCEPTION_DbInsertion = -2;
 }//public class CONST

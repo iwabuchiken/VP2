@@ -1,0 +1,58 @@
+02-10 14:44:31.830: D/dalvikvm(12646): GC_FOR_ALLOC freed 29K, 7% free 6639K/7111K, paused 24ms
+02-10 14:44:31.830: I/dalvikvm-heap(12646): Grow heap (frag case) to 6.818MB for 262156-byte allocation
+02-10 14:44:31.840: D/dalvikvm(12646): GC_FOR_ALLOC freed 0K, 8% free 6895K/7431K, paused 14ms
+02-10 14:44:31.850: D/MainActv.java[621:onListItemClick](12646): File=/mnt/sdcard/vp2/media/Gallaghers Frolics.mp4
+02-10 14:44:31.870: D/MainActv.java[510](12646): onPause()
+02-10 14:44:31.900: D/PlayActv.java[120](12646): Media dir => exists
+02-10 14:44:31.910: D/DBUtils.java[111:createTable](12646): Table exists => srt_data
+02-10 14:44:31.910: D/PlayActv.java[210:setupBookmarkList](12646): itemName=Gallaghers Frolics.mp4
+02-10 14:44:31.910: D/Methods_VP2.java[337:convertItemName2TableName](12646): tokens.length=2
+02-10 14:44:31.910: D/PlayActv.java[223:setupBookmarkList](12646): tableName=Gallaghers_Frolics
+02-10 14:44:31.920: D/Methods_VP2.java[374:getBookmarkList](12646): tableName=Gallaghers_Frolics
+02-10 14:44:31.920: D/Methods.java[417](12646): c.getCount()=0
+02-10 14:44:31.920: D/Methods.java[436](12646): c.getCount() < 1
+02-10 14:44:31.920: D/PlayActv.java[244:setupBookmarkList](12646): CONST.bookmarkList == null
+02-10 14:44:31.920: D/PlayActv.java[270](12646): CONST.biAdapter != null
+02-10 14:44:31.920: D/PlayActv.java[289](12646): CONST.lv_bookMarks != null
+02-10 14:44:31.920: D/PlayActv.java[303:setupBookmarkList](12646): Either CONST.lv_bookMarks is null or CONST.biAdapter is null or CONST.bookmarkList is null
+02-10 14:44:31.920: D/PlayActv.java[331:startMedia](12646): mediaName=Gallaghers Frolics.mp4
+02-10 14:44:31.920: D/PlayActv.java[354](12646): Video path=/mnt/sdcard/vp2/media/Gallaghers Frolics.mp4
+02-10 14:44:31.930: D/PlayActv.java[364](12646): Focus requested
+02-10 14:44:32.110: D/MediaPlayer(12646): getMetadata
+02-10 14:44:32.110: D/PlayActv.java[377](12646): vvPlayer.getDuration()=74675
+02-10 14:44:32.130: D/MainActv.java[385](12646): Calling task...
+02-10 14:44:32.150: D/Task_Progress.java[90](12646): duration=74675
+02-10 14:44:32.230: D/OpenGLRenderer(12646): Flushing caches (mode 0)
+02-10 14:44:32.240: D/dalvikvm(12646): GC_CONCURRENT freed 190K, 5% free 7100K/7431K, paused 1ms+30ms
+02-10 14:44:32.300: D/MainActv.java[522](12646): onStop()
+02-10 14:44:35.190: D/ButtonOnClickListener.java[208:case_actv_main_ib_start](12646): CurrentPosition=00:00:25
+02-10 14:44:35.200: D/Methods_VP2.java[564:saveBookmark](12646): tableName=null
+02-10 14:44:35.200: D/Methods_VP2.java[579:saveBookmark](12646): Calling => DBUtils.insertData_StartPosition()
+02-10 14:44:35.200: I/SqliteDatabaseCpp(12646): sqlite returned: error code = 1, msg = near "null": syntax error, db=/data/data/vp2.main/databases/vp
+02-10 14:44:35.210: E/SQLiteDatabase(12646): Error inserting startTime=25659 created_at=1360475075209 modified_at=1360475075209
+02-10 14:44:35.210: E/SQLiteDatabase(12646): android.database.sqlite.SQLiteException: near "null": syntax error: , while compiling: INSERT INTO null(startTime,created_at,modified_at) VALUES (?,?,?)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteCompiledSql.native_compile(Native Method)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteCompiledSql.<init>(SQLiteCompiledSql.java:68)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteProgram.compileSql(SQLiteProgram.java:143)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteProgram.compileAndbindAllArgs(SQLiteProgram.java:361)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteStatement.acquireAndLock(SQLiteStatement.java:260)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:112)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1718)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1591)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at vp2.utils.DBUtils.insertData_StartPosition(DBUtils.java:456)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at vp2.utils.Methods_VP2.saveBookmark(Methods_VP2.java:584)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at vp2.listeners.button.ButtonOnClickListener.case_actv_main_ib_start(ButtonOnClickListener.java:218)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at vp2.listeners.button.ButtonOnClickListener.onClick(ButtonOnClickListener.java:108)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.view.View.performClick(View.java:3511)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.view.View$PerformClick.run(View.java:14110)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.os.Handler.handleCallback(Handler.java:605)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.os.Handler.dispatchMessage(Handler.java:92)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.os.Looper.loop(Looper.java:137)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at android.app.ActivityThread.main(ActivityThread.java:4424)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at java.lang.reflect.Method.invokeNative(Native Method)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at java.lang.reflect.Method.invoke(Method.java:511)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+02-10 14:44:35.210: E/SQLiteDatabase(12646): 	at dalvik.system.NativeStart.main(Native Method)
+02-10 14:44:35.210: D/DBUtils.java[467:insertData_StartPosition](12646): Data inserted => (startTime => 25659), and others
+02-10 14:44:35.210: D/ButtonOnClickListener.java[596](12646): Stored => 25659
